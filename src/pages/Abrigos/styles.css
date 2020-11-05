@@ -1,0 +1,44 @@
+.titulo-abrigos {
+	color: #669999;
+	margin: 40px 20px;
+}
+
+#Abrigos-lista {
+	background: #BDD3D3;
+}
+
+#Abrigos-lista .abrigo {
+	display: flex;
+	justify-content: space-between;
+}
+
+#Abrigos-lista .abrigo h3 {
+	margin-bottom: 6px;
+}
+
+#Abrigos-lista .abrigo p {
+	color: #525151;
+}
+
+.abrigo-content {
+	padding: 20px;
+}
+
+.bttn-visitar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 8vw;
+	transition: background 0.5s;
+	transition: width 0.5s;
+}
+
+.bttn-visitar:hover {
+	width: 15vw;
+	background: #669999;
+}
+
+.link-abrigo {
+	text-decoration: none;
+	color: #111;
+}

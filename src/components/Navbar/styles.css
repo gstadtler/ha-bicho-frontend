@@ -1,0 +1,42 @@
+#menu-navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#menu-navbar header {
+  display: flex;
+  gap: 60px;
+  margin-left: 20px;
+}
+
+#menu-navbar footer {
+  display: flex;
+  gap: 30px;
+  margin-right: 10px;
+}
+
+.link-navbar {
+  text-decoration: none;
+  color: #333366;
+  border-radius: 4px;
+  transition: background 0.5s;
+  transition: color 0.2s;
+}
+
+.link-navbar:hover {
+  background: #669999;
+  color: #fff;
+}
+
+.register {
+  background: #669999;
+  color: #fff;
+  width: 125px;
+  text-align: center;
+  transition: background 0.5s;
+}
+
+.register:hover {
+  background: #1d4949;
+}

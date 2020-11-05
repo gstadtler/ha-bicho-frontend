@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 //import Slideshow from '../../components/Slideshow';
-import Navbar from '../../components/Navbar';
+import NavbarHome from '../../components/NavbarHome';
 
 import './styles.css';
 import logoImg from '../../imagens/logo.svg';
@@ -11,7 +11,7 @@ import pets from '../../imagens/pets2.svg';
 function Home() {
   return (
     <div id="home-page">
-      <Navbar />
+      <NavbarHome />
       <div className="conteudo">
 
         <img src={pets} alt="Ha-bicho" style={{height: 'max-content', width: '100vw'}} />

@@ -1,0 +1,16 @@
+#home-page .conteudo {
+	margin-top: 40px;
+}
+
+#home-page .conteudo img {
+	display: flex;
+	width: 100vw;
+	height: 15vh;
+	margin: 50px 0 30px;
+}
+
+#home-page .conteudo main {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}

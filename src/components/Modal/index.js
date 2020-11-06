@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 
 import AbrigoForm from '../AbrigoForm';
-import Button from '../Button';
 
 import { FiX } from "react-icons/fi";
 import './styles.css';
@@ -20,7 +19,9 @@ function Modal() {
 
 	return (
 		<>
-			<Button titulo={"Cadastre seu Abrigo"} setModal={handleOpenModal} />
+			<button className="bt-open-modal" onClick={handleOpenModal}>
+				Cadastre seu Abrigo
+			</button>
 			<ReactModal
 				isOpen={showModal}
 				ariaHideApp={false}

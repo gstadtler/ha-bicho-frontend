@@ -3,13 +3,11 @@
 	margin: 40px 20px;
 }
 
-#Abrigos-lista {
-	background: #BDD3D3;
-}
-
 #Abrigos-lista .abrigo {
+	background: #BDD3D3;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 20px;
 }
 
 #Abrigos-lista .abrigo h3 {

@@ -1,0 +1,15 @@
+#contato-page header {
+	width: 70vw;
+	padding: 25px;
+	margin-top: 50px;
+}
+
+#contato-page header h1 {
+	color: #669999;
+	margin-bottom: 30px;
+}
+
+#contato-page footer {
+	margin-left: 25vw;
+	margin-right: 5vw;
+}

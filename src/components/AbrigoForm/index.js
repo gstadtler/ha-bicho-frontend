@@ -2,7 +2,7 @@ import React from "react";
 import { Form } from "@unform/web";
 import Input from "../Input";
 import api from '../../services/api';
-import logotipo from "../../imagens/logotipo.svg"
+import logotipoAzul from "../../imagens/logotipo-azul.svg"
 import "./styles.css";
 
 function AbrigoForm(props) {
@@ -27,10 +27,10 @@ function AbrigoForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <img
-        src={logotipo}
-        height="150"
-        width="175"
+        src={logotipoAzul}
         alt="Ha-bicho"
+        width="175"
+        height="150"
       />
 
       <Input name="cnpj_cpf" label="CNPJ ou CPF do responsável" required/>

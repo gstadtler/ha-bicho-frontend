@@ -1,4 +1,6 @@
 .bt-open-modal {
+	width: 15vw;
+	padding: 0;
 	background: #669999;
 	color: #fff;
 	text-align: center;

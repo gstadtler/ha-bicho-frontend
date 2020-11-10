@@ -19,7 +19,7 @@ function NavbarHome(props) {
           <Link to="/faq" className="link-navbar">FAQ</Link>
           <Link to="/session" className="link-navbar">Log in</Link>
           <Modal />
-          <Link to="/register" className="link-navbar register">Faça parte</Link>
+          <Link to="/register" className="link-navbar register">Seja doador/a</Link>
         </footer>
       </div>
     </>

@@ -15,12 +15,12 @@ function Navbar(props) {
 					<Link to="/abrigos" className="link-navbar">Lista de Abrigos</Link>
 					<Link to="/contato" className="link-navbar">Contato</Link>
 				</header>
-				<img src={navbarLogo} alt="Ha-bicho" width={240} height={38} />
+				<img src={navbarLogo} alt="Ha-bicho" width={240} height={25} />
 				<footer>
 					<Link to="/faq" className="link-navbar">FAQ</Link>
 					<Link to="/session" className="link-navbar">Log in</Link>
 					<Modal />
-					<Link to="/register" className="link-navbar register">Faça parte</Link>
+					<Link to="/register" className="link-navbar register">Seja doador/a</Link>
 				</footer>
 			</div>
 		</>

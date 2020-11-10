@@ -1,0 +1,30 @@
+#Abrigo-perfil h1 {
+	color: #669999;
+	margin-top: 80px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+#Abrigo-perfil header{
+	background: #669999;
+	color: #ffffff;
+	border-radius: 6px;
+	text-align: center;
+	width: 50%;
+	margin: auto;
+}
+
+#Abrigo-perfil footer {
+	display: flex;
+	gap: 30px;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 50px;
+}
+
+#Abrigo-perfil footer button {
+	background: #669999;
+	width: fit-content;
+	height: 10vh;
+	
+}

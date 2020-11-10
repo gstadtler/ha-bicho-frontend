@@ -1,0 +1,16 @@
+#Faq-page h1 {
+	margin: 34px 0 10px 55px;
+	color: #669999;
+}
+
+#Faq-page .faq-content h3 {
+	background: #bdd3d3;
+	margin: 10px 40px;
+	padding-left: 10px;
+	border-radius: 6px;
+}
+
+#Faq-page .faq-content p {
+	margin: 10px 40px 30px;
+	padding-left: 10px;
+}

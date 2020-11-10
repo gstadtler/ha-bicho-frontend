@@ -1,8 +1,79 @@
-#Register {
-    margin-top: 200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    gap: 50px;
+#Register header h1 {
+	margin: 40px 0 10px 55px;
+	color: #669999;
+}
+
+#Register header img {
+	width: 100%;
+	margin: auto;
+}
+
+#Register main{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	gap: 20px;
+	align-items: center;
+}
+
+#Register main .facebook-button {
+	background:#1877f2;
+	display: flex;
+  gap: 10px;
+	align-items: center;
+	transition: background 0.5s;
+}
+
+#Register main .facebook-button:hover {
+	background: #4f6e97;
+}
+
+#Register main .google-button {
+	height: 8.5vh;
+}
+
+#Register form input {
+	background:#E5E5E5;
+	margin-bottom: 15px;
+	padding: 12px 16px;
+	border-radius: 4px;
+	border: 2px solid #ddd;
+	font-size: 15px;
+	color: #444;
+	transition: border-color 0.2s;
+}
+
+#Register form input:focus {
+	border-color: #111;
+}
+
+#Register footer {
+	width: 35vw;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.check-buttons {
+	display: flex;
+	gap: 80px;
+}
+
+.toggle-password {
+	display: flex;
+}
+
+.check-terms {
+	display: flex;
+}
+
+.check-input {
+	width: 3vw;
+	height: 3vh;
+	cursor: pointer;
+}
+
+.register-button {
+	background: #669999;
+	width: 15vw;
+	margin: auto;
 }

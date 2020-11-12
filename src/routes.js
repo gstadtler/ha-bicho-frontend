@@ -7,6 +7,7 @@ import SobreNos from './pages/SobreNos';
 import Contato from './pages/Contato';
 import AbrigoPerfil from './pages/AbrigoPerfil';
 import Faq from './pages/Faq';
+import Session from './pages/Session';
 
 function Routes() {
 	return (
@@ -15,7 +16,8 @@ function Routes() {
 				<Route path="/" exact component={Home} />
 				<Route path="/abrigos" component={Abrigos} />
 				<Route path="/register" component={Register} />
-				<Route path="/quem-somos" component={SobreNos} />
+				<Route path="/session" component={Session} />
+				<Route path="/sobre-nos" component={SobreNos} />
 				<Route path="/contato" component={Contato} />
 				<Route path="/perfil-abrigo/:abrigoId" component={AbrigoPerfil} />
 				<Route path="/faq" component={Faq} />

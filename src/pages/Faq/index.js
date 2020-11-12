@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Navbar from '../../components/Navbar';
+import MenuNavbar from '../../components/MenuNavbar';
 
 import './styles.css';
 
 function Faq() {
 	return (
 		<>
-			<Navbar />
+			<MenuNavbar />
 			<div id="Faq-page">
 				<h1>FAQ</h1>
 				<div className="faq-content">

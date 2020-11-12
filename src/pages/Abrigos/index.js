@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { 
+	Card,
+	CardHeader,
+	CardBody,
+	CardFooter,
+	CardTitle,
+	CardText,
+} from 'reactstrap';
 
-import Navbar from '../../components/Navbar';
+import MenuNavbar from '../../components/MenuNavbar';
 
 import './styles.css';
 import api from '../../services/api';
@@ -28,21 +36,25 @@ function Abrigos() {
 
 	return (
 		<>
-			<Navbar />
+			<MenuNavbar />
 			<h1 className="titulo-abrigos">Lista de Abrigos</h1>
-			<div id="Abrigos-lista">
+			<Card style={{border: "none"}}>
 				{abrigos.map(abrigo =>
-					<div key={abrigo.id} className="abrigo">
-						<div className="abrigo-content">
-							<h3>{abrigo.nome}</h3>
-							<p>{abrigo.descricao}</p>
-						</div>
-						<div className="bttn-visitar">
+					<CardBody key={abrigo.id} className="abrigo">
+						<CardHeader style={{background: "none", border: "none", padding: "20px"}}>
+							<CardTitle tag="h3">
+								{abrigo.nome}
+							</CardTitle>
+							<CardText tag="h5" className="abrigo-descricao">
+								{abrigo.descricao}
+							</CardText>
+						</CardHeader>
+						<CardFooter className="bttn-conhecer">
 							<Link to={`/perfil-abrigo/${abrigo.id}`} className="link-abrigo">Conhecer</Link>
-						</div>
-					</div>
+						</CardFooter>
+					</CardBody>
 				)}
-			</div>
+			</Card>
 		</>
 	);
 }

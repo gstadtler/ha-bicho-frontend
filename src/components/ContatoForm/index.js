@@ -1,24 +1,38 @@
 import React from "react";
-import { Form } from "@unform/web";
-import Input from "../Input";
-import api from '../../services/api';
+import {
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Button
+} from 'reactstrap';
+
 import "./styles.css";
 
-function AbrigoForm(props) {
+
+function ContatoForm(props) {
 
 	async function handleSubmit(data, { reset }) {
 	}
 
 	return (
 		<Form onSubmit={handleSubmit}>
-
-			<Input name="nome" label="Nome" required />
-			<Input name="email" label="Email" type="email" required />
-			<Input name="mensagem" label="Mensagem" type="text" required />
+			<FormGroup className="contato-form">
+				<Label>Nome</Label>
+				<Input name="nome" className="input-form" required/>
+			</FormGroup>
+			<FormGroup className="contato-form">
+				<Label>Email</Label>
+				<Input name="email" type="email" className="input-form" required />
+			</FormGroup>
+			<FormGroup className="contato-form">
+				<Label>Texto</Label>
+				<Input name="mensagem" type="textarea" className="input-form" required />
+			</FormGroup>
 			
-			<button className="send-button" type="submit">Enviar</button>
+			<Button className="send-button" type="submit">Enviar</Button>
 		</Form>
 	);
 }
 
-export default AbrigoForm;
+export default ContatoForm;

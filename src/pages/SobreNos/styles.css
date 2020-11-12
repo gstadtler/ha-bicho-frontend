@@ -1,20 +1,18 @@
 #sobre-nos {
-	background: url('../../imagens/logotipo-cinza.svg') repeat-y right bottom;
+	background: url('../../imagens/logotipo-cinza.svg') repeat-y right bottom fixed;
 }
 
 #sobre-nos h1 {
-	margin: 34px 0 10px 55px;
+	margin: 34px 0 40px 55px;
 	color: #669999;
 }
 
-.sobre-nos-content {
+.sb-nos {
 	background:#bdd3d3;
-	position: relative;
-	width: 780px;
-	height: 528px;
-	left: 294px;
+	height: 525px;
 }
 
-.sobre-nos-content p {
-	padding: 30px;
+.sb-nos p {
+	font-weight: 600;
+	font-size: 20px;
 }

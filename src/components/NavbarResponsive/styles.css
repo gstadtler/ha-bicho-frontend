@@ -1,0 +1,26 @@
+.link-navbar {
+  text-decoration: none!important;
+  color: #333366;
+	font-weight: 600;
+	font-size: 18px;
+  border-radius: 4px;
+  transition: background 0.5s;
+  transition: color 0.2s;
+}
+  
+.link-navbar:hover {
+  background: #669999;
+  color: #fff;
+}
+  
+.register {
+  background: #669999;
+  color: #fff;
+  width: 125px;
+  text-align: center;
+  transition: background 0.5s;
+}
+  
+.register:hover {
+  background: #1d4949;
+}

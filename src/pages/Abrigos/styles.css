@@ -3,40 +3,36 @@
 	margin: 40px 20px;
 }
 
-#Abrigos-lista .abrigo {
+.abrigo {
 	background: #BDD3D3;
+	padding: 0!important;
+	border-radius: 4px;
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 20px;
 }
 
-#Abrigos-lista .abrigo h3 {
-	margin-bottom: 6px;
-}
-
-#Abrigos-lista .abrigo p {
+.abrigo-descricao {
 	color: #525151;
+	font-weight: 600;
+	font-size: 18px;
 }
 
-.abrigo-content {
-	padding: 20px;
-}
-
-.bttn-visitar {
+.abrigo .bttn-conhecer {
+	border: none;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 8vw;
+	font-weight: 600;	
+	font-size: 18px;
 	transition: background 0.5s;
-	transition: width 0.5s;
 }
 
-.bttn-visitar:hover {
-	width: 15vw;
+.abrigo .bttn-conhecer:hover {
 	background: #669999;
 }
 
-.link-abrigo {
+.abrigo .link-abrigo {
 	text-decoration: none;
 	color: #111;
 }

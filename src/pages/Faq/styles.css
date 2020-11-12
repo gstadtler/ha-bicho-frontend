@@ -13,4 +13,6 @@
 #Faq-page .faq-content p {
 	margin: 10px 40px 30px;
 	padding-left: 10px;
+	font-weight: 600;
+	font-size: 18px;
 }

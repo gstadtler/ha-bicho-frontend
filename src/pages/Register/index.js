@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar';
-import { Form } from "@unform/web";
-import Input from "../../components/Input";
-import { FaFacebook } from 'react-icons/fa';
+import MenuNavbar from '../../components/MenuNavbar';
+import { FaFacebook, FaEye } from 'react-icons/fa';
+
+import {
+	Container,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Button
+} from 'reactstrap';
 
 import logotipoVerde from '../../imagens/logotipo-verde.svg';
 import './styles.css';
@@ -22,7 +29,7 @@ function Register() {
 
 
 	function togglePassword() {
-		const inputPassword  = document.getElementById("password-input");
+		const inputPassword = document.getElementById("password-input");
 		if (inputPassword.type === "password") {
 			inputPassword.type = "text";
 		} else {
@@ -30,7 +37,7 @@ function Register() {
 		}
 	}
 
-	const responseFacebook = (response) => {
+	function responseFacebook(response) {
 		console.log(response);
 		//setData(response);
 		//setPicture(response.picture.data.url);
@@ -41,61 +48,65 @@ function Register() {
 		//}
 	}
 
-	const responseGoogle = (response) => {
+	function responseGoogle(response) {
 		console.log(response);
 	}
 
 	return (
 		<>
-			<Navbar />
-			<div id="Register">
+			<MenuNavbar />
+			<Container id="Register" fluid={true}>
 				<header>
 					<h1>Cadastro</h1>
 					<img src={logotipoVerde} alt="Ha-bicho" width="175" height="100" />
 				</header>
 
-				<main>
-					<div className="login-fb">
-						<FacebookLogin
-							appId="398864984824000"
-							fields="name,email,picture"
-							scope="public_profile,user_friends"
-							callback={responseFacebook}
-							icon={<FaFacebook />}
-							textButton="Entrar com Facebook"
-							cssClass="facebook-button"
-						/>
-					</div>
-					<div className="login-google">
-						<GoogleLogin
-							clientId="969966321777-hj4ej23le0r0gs8ga68k2l2516q88mqh.apps.googleusercontent.com"
-							buttonText="Entrar com Google"
-							onSuccess={responseGoogle}
-							onFailure={responseGoogle}
-							className="google-button"
-						/>
-					</div>
-				</main>
-
 				<footer>
 					<Form onSubmit={handleSubmit}>
-						<Input name="username" placeholder="Nome de usuário" required />
-						<Input name="email" placeholder="Email" type="email" required />
-						<Input name="password" id="password-input" placeholder="Senha" type="password" required />
-						<div className="check-buttons">
-							<div className="toggle-password">
-								<input type="checkbox" onClick={togglePassword} className="check-input" />
-								<h6>Mostrar senha</h6>
+						<FormGroup>
+							<Input name="username" placeholder="Nome de usuário" required />
+						</FormGroup>
+
+						<FormGroup>
+							<Input name="email" placeholder="Email" type="email" required />
+						</FormGroup>
+
+						<FormGroup>
+							<Input name="password" id="password-input" placeholder="Senha" type="password" required />
+						</FormGroup>
+
+						<FormGroup style={{display: "flex"}}>
+							<Label className="ml-4 termos-label">Concordo com os termos e condições</Label>
+							<Input type="checkbox" className="termos" />
+						</FormGroup>
+
+						<Button className="register-button" type="submit">Cadastrar</Button>
+
+						<FormGroup className="social-login">
+							<div className="login-fb">
+								<FacebookLogin
+									appId="398864984824000"
+									fields="name,email,picture"
+									scope="public_profile,user_friends"
+									callback={responseFacebook}
+									icon={<FaFacebook />}
+									textButton="Entrar com Facebook"
+									cssClass="facebook-button"
+								/>
 							</div>
-							<div className="check-terms">
-								<input type="checkbox" className="check-input" />
-								<h6>Concordo com os termos e condições</h6>
+							<div className="login-google">
+								<GoogleLogin
+									clientId="969966321777-hj4ej23le0r0gs8ga68k2l2516q88mqh.apps.googleusercontent.com"
+									buttonText="Entrar com Google"
+									onSuccess={responseGoogle}
+									onFailure={responseGoogle}
+									className="google-button"
+								/>
 							</div>
-						</div>
-						<button className="register-button" type="submit">Cadastrar</button>
+						</FormGroup>
 					</Form>
 				</footer>
-			</div>
+			</Container>
 		</>
 	);
 }

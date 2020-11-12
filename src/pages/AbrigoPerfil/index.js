@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Navbar from '../../components/Navbar';
+import MenuNavbar from '../../components/MenuNavbar';
 import api from '../../services/api';
 
 import './styles.css';
@@ -25,7 +25,7 @@ function AbrigoPerfil(props) {
 
 	return (
 		<>
-			<Navbar />
+			<MenuNavbar />
 			<div className="abrigo-background">
 				<div id="Abrigo-perfil">
 					<h1>{abrigo.nome}</h1>

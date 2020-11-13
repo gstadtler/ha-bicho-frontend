@@ -1,15 +1,51 @@
-import React from "react";
-import { Form } from "@unform/web";
-import Input from "../Input";
+import React, { useState } from "react";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Row,
+  Col
+} from 'reactstrap';
+
 import api from '../../services/api';
 import logotipoAzul from "../../imagens/logotipo-azul.svg"
 import "./styles.css";
 
 function AbrigoForm(props) {
 
-  async function handleSubmit(data, { reset }) {
+  const [cnpj_cpf, setCnpj_cpf] = useState('');
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [qtd_animais, setQtd_animais] = useState();
+  const [telefone, setTelefone] = useState('');
+  const [rua, setRua] = useState('');
+  const [numero, setNumero] = useState('');
+  const [cep, setCep] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [uf, setUf] = useState('');
+
+  async function handleSubmitForm(e) {
+    e.preventDefault();
     try {
-      const novoAbrigo = data;
+      const novoAbrigo = {
+        cnpj_cpf,
+        nome,
+        email,
+        descricao,
+        qtd_animais,
+        telefone,
+        rua,
+        numero,
+        cep,
+        bairro,
+        cidade,
+        uf
+      }
+      console.log(novoAbrigo);
       const response = await api.post("/abrigos", novoAbrigo);
       console.log(response);
       if (response.status === 200) {
@@ -20,12 +56,11 @@ function AbrigoForm(props) {
     } catch (err) {
       console.log(err);
     };
-    reset();
     props.setModal();
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmitForm} className="abrigo-form">
       <img
         src={logotipoAzul}
         alt="Ha-bicho"
@@ -33,28 +68,166 @@ function AbrigoForm(props) {
         height="150"
       />
 
-      <Input name="cnpj_cpf" label="CNPJ ou CPF do responsável" required/>
-      <Input name="nome" label="Nome do Abrigo" required />
-      <Input name="email" label="Email" type="email" />
-      <Input name="descricao" label="Descrição" type="text" required />
-      <Input name="qtd_animais" label="Número de animais" required />
-      <Input name="telefone" label="Telefone" required />
+      <Row>
+        <Col>
+          <FormGroup>
+            <Label>CNPJ ou CPF do responsável</Label>
+            <Input
+              name="cnpj_cpf"
+              value={cnpj_cpf}
+              onChange={e => setCnpj_cpf(e.target.value)}
+              required
+            />
+          </FormGroup>
+        </Col>
+        <Col>
+          <FormGroup>
+            <Label>Nome do Abrigo</Label>
+            <Input
+              name="nome"
+              value={nome}
+              onChange={e => setNome(e.target.value)}
+              required
+            />
+          </FormGroup>
+        </Col>
+      </Row>
 
-      <div className="endereco">
-        <label className="address-field">Endereço</label>
-        <header>
-          <Input name="rua" label="Rua" required />
-          <Input name="numero" label="Número" required />
-          <Input name="cep" label="CEP" required />
-        </header>
-        <footer>
-          <Input name="bairro" label="Bairro" required />
-          <Input name="cidade" label="Cidade" required />
-          <Input name="uf" label="UF" required />
-        </footer>
-      </div>
+      <Row>
+        <Col>
+          <FormGroup>
+            <Label>Email</Label>
+            <Input
+              name="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              type="email"
+            />
+          </FormGroup>
+        </Col>
+        <Col>
+          <FormGroup>
+            <Label>Descrição</Label>
+            <Input
+              name="descricao"
+              value={descricao}
+              onChange={e => setDescricao(e.target.value)}
+              type="textarea"
+              required
+            />
+          </FormGroup>
+        </Col>
+      </Row>
 
-      <button className="submit-button" type="submit">Cadastrar</button>
+      <Row>
+        <Col>
+          <FormGroup>
+            <Label>Número de animais</Label>
+            <Input
+              name="qtd_animais"
+              value={qtd_animais}
+              onChange={e => setQtd_animais(e.target.value)}
+              required
+            />
+          </FormGroup>
+        </Col>
+        <Col>
+          <FormGroup>
+            <Label>Telefone</Label>
+            <Input
+              name="telefone"
+              value={telefone}
+              onChange={e => setTelefone(e.target.value)}
+              required
+            />
+          </FormGroup>
+        </Col>
+      </Row>
+
+      <FormGroup className="endereco">
+        <Label className="address-field">Endereço</Label>
+        <Row>
+
+          <Col>
+            <FormGroup>
+              <Label>Rua</Label>
+              <Input
+                name="rua"
+                value={rua}
+                onChange={e => setRua(e.target.value)}
+                required
+              />
+            </FormGroup>
+          </Col>
+
+          <Col>
+            <FormGroup>
+              <Label>Número</Label>
+              <Input
+                name="numero"
+                value={numero}
+                onChange={e => setNumero(e.target.value)}
+                required
+              />
+            </FormGroup>
+          </Col>
+
+          <Col>
+            <FormGroup>
+              <Label>CEP</Label>
+              <Input
+                name="cep"
+                value={cep}
+                onChange={e => setCep(e.target.value)}
+                required
+              />
+            </FormGroup>
+          </Col>
+
+        </Row>
+
+        <Row>
+
+          <Col>
+            <FormGroup>
+              <Label>Bairro</Label>
+              <Input
+                name="bairro"
+                value={bairro}
+                onChange={e => setBairro(e.target.value)}
+                required
+              />
+            </FormGroup>
+          </Col>
+
+          <Col>
+            <FormGroup>
+              <Label>Cidade</Label>
+              <Input
+                name="cidade"
+                value={cidade}
+                onChange={e => setCidade(e.target.value)}
+                required
+              />
+            </FormGroup>
+          </Col>
+
+          <Col>
+            <FormGroup>
+              <Label>UF</Label>
+              <Input
+                name="uf"
+                value={uf}
+                onChange={e => setUf(e.target.value)}
+                required
+              />
+            </FormGroup>
+          </Col>
+
+        </Row>
+      </FormGroup>
+
+      <Button className="submit-button" type="submit">Cadastrar</Button>
     </Form>
   );
 }

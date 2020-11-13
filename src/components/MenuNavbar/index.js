@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa'
-import Modal from '../Modal';
+import ModalComponent from '../ModalComponent';
 import './styles.css';
 
 import {
@@ -10,10 +10,11 @@ import {
 	NavbarToggler,
 	Nav,
 	NavItem,
+	Button
 } from 'reactstrap';
 
 
-function MenuNavbar(props) {
+function MenuNavbar() {
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -23,7 +24,7 @@ function MenuNavbar(props) {
 
 	return (
 		<>
-			<Navbar light expand="md" id="menu-navbar">
+			<Navbar light expand="md" className="menu-navbar">
 				<NavbarToggler onClick={toggle} />
 				<Collapse isOpen={isOpen} navbar>
 
@@ -58,11 +59,13 @@ function MenuNavbar(props) {
 						</NavItem>
 
 						<NavItem className="mr-2 ml-2">
-							<Modal />
+							<ModalComponent />
 						</NavItem>
 
 						<NavItem className="ml-2">
-							<Link to="/register" className="link-navbar register">Seja doador/a</Link>
+							<Button className="register">
+								<Link to="/register" className="link-register">Seja doador/a</Link>
+							</Button>
 						</NavItem>
 
 					</Nav>

@@ -1,4 +1,4 @@
-.link-navbar {
+.responsive-navbar .link-navbar {
   text-decoration: none!important;
   color: #333366;
 	font-weight: 600;
@@ -8,19 +8,26 @@
   transition: color 0.2s;
 }
   
-.link-navbar:hover {
+.responsive-navbar .link-navbar:hover {
   background: #669999;
   color: #fff;
 }
   
-.register {
+.responsive-navbar .register {
   background: #669999;
-  color: #fff;
-  width: 125px;
-  text-align: center;
-  transition: background 0.5s;
+  width: 12vw;
+  padding: 0;
+	border-radius: 4px;
+	transition: background 0.5s;
 }
-  
-.register:hover {
-  background: #1d4949;
+		
+.responsive-navbar .register:hover {
+	background: #527272;
+}
+
+.responsive-navbar .link-register {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+	font-size: 16px;
 }

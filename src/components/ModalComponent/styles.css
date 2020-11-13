@@ -1,0 +1,27 @@
+.modal-form .bt-open-modal {
+	width: 15vw;
+	padding: 0;
+	background: #669999;
+	color: #fff;
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+	border-radius: 4px;
+	transition: background 0.5s;
+}
+		
+.modal-form .bt-open-modal:hover {
+	background: #527272;
+}
+
+.modal-component .bt-close-modal {
+	background: #333366;
+	display: flex;
+	align-self: flex-end;
+	margin: 10px 10px;
+	padding: 10px;
+}
+
+.modal-component .bt-close-modal:hover {
+	background-color: #5d5d99;
+}

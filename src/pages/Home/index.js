@@ -39,7 +39,6 @@ function Home() {
       <Container className="second-container" fluid={true}>
         <Row>
           <Col lg="6" md="6" sm="12" className="p-4">
-            <AbrigosMap />
           </Col>
           <Col className="find-abrigos">
             <main>

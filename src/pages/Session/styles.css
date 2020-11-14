@@ -1,14 +1,16 @@
-.Register header h1 {
+.Login header h1 {
 	margin: 20px 0 10px 55px;
 	color: #669999;
 }
 
-.Register header img {
+.Login header img {
 	width: 100%;
 	margin: auto;
 }
 
-.Register form input {
+.Login form input {
+  width: 83%;
+  margin: auto;
 	background:#E5E5E5;
 	border-radius: 4px;
 	font-weight: 500;
@@ -16,18 +18,14 @@
 	color: #444;
 }
 
-.Register footer {
+.Login footer {
 	width: 35vw;
 	margin: auto;
 	margin-top: 20px;
 }
 
-.Register .termos-group{
-	display: flex;
-	justify-content: center;
-}
 
-.Register .register-button {
+.Login .login-button {
 	background: #669999;
 	width: 20vw;
 	display: flex;
@@ -38,7 +36,7 @@
 	transition: background 0.5s;
 }
 
-.Register .register-button:hover {
+.Login .login-button:hover {
 	background: #527272;
 }
 
@@ -50,7 +48,7 @@
 	align-items: center;
 }
 
-.Register .facebook-button {
+.Login .facebook-button {
 	background:#1877f2;
 	color: #fff;
 	height: 8.5%;
@@ -63,21 +61,22 @@
 	transition: background 0.5s;
 }
 
-.Register .facebook-button:hover {
+.Login .facebook-button:hover {
 	background: #4f6e97;
 }
 
-.Register .google-button {
+.Login .google-button {
 	height: 8.5%;
 }
 
-.Register .login-group {
+.Login .register-group {
+  margin-top: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: baseline;
 }
 
-.Register .link-login {
+.Login .link-register {
 	margin-left: 5px;
 	text-decoration: none;
 	font-weight: 600;

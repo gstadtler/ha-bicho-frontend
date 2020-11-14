@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import api from '../../services/api';
+import { login } from '../../services/auth';
 import MenuNavbar from '../../components/MenuNavbar';
-import { FaFacebook, FaEye } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
 
 import {
 	Container,
 	Form,
 	FormGroup,
-	Label,
 	Input,
 	Button
 } from 'reactstrap';
@@ -17,35 +19,47 @@ import './styles.css';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
+
 function Register() {
 
-	//const [login, setLogin] = useState(false);
-	//const [data, setData] = useState({});
-	//const [picture, setPicture] = useState('');
+	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	function handleSubmit() {
+	const [loggedIn, setLoggedIn] = useState(false);
+	const [userData, setUserData] = useState({});
 
-	}
+	async function handleSignUp(e) {
+		e.preventDefault();
+    try {
+      const novoUsuario = {
+				username,
+				email,
+				password
+      }
+      console.log(novoUsuario);
+      const response = await api.post("/users", novoUsuario);
+      console.log(response);
+      if (response.status === 200) {
+        alert("Agora você pode ajudar vários bichinhos de uma forma mais fácil e transparente!");
+      } else {
+        alert("Houve algum erro durante o cadastro :(");
+      }
+    } catch (err) {
+      console.log(err);
+    };
 
-
-	function togglePassword() {
-		const inputPassword = document.getElementById("password-input");
-		if (inputPassword.type === "password") {
-			inputPassword.type = "text";
-		} else {
-			inputPassword.type = "password";
-		}
 	}
 
 	function responseFacebook(response) {
 		console.log(response);
-		//setData(response);
-		//setPicture(response.picture.data.url);
-		//if (response.accessToken) {
-		//setLogin(true);
-		//} else {
-		//setLogin(false);
-		//}
+		setUserData(response);
+		if (response.accessToken) {
+			setLoggedIn(true);
+			login(response.accessToken);
+		} else {
+			setLoggedIn(false);
+		}
 	}
 
 	function responseGoogle(response) {
@@ -55,33 +69,14 @@ function Register() {
 	return (
 		<>
 			<MenuNavbar />
-			<Container id="Register" fluid={true}>
+			<Container className="Register" fluid={true}>
 				<header>
 					<h1>Cadastro</h1>
 					<img src={logotipoVerde} alt="Ha-bicho" width="175" height="100" />
 				</header>
 
 				<footer>
-					<Form onSubmit={handleSubmit}>
-						<FormGroup>
-							<Input name="username" placeholder="Nome de usuário" required />
-						</FormGroup>
-
-						<FormGroup>
-							<Input name="email" placeholder="Email" type="email" required />
-						</FormGroup>
-
-						<FormGroup>
-							<Input name="password" id="password-input" placeholder="Senha" type="password" required />
-						</FormGroup>
-
-						<FormGroup style={{display: "flex"}}>
-							<Label className="ml-4 termos-label">Concordo com os termos e condições</Label>
-							<Input type="checkbox" className="termos" />
-						</FormGroup>
-
-						<Button className="register-button" type="submit">Cadastrar</Button>
-
+					<Form onSubmit={handleSignUp}>
 						<FormGroup className="social-login">
 							<div className="login-fb">
 								<FacebookLogin
@@ -90,20 +85,65 @@ function Register() {
 									scope="public_profile,user_friends"
 									callback={responseFacebook}
 									icon={<FaFacebook />}
-									textButton="Entrar com Facebook"
+									textButton="Inscreva-se com Facebook"
 									cssClass="facebook-button"
 								/>
 							</div>
 							<div className="login-google">
 								<GoogleLogin
 									clientId="969966321777-hj4ej23le0r0gs8ga68k2l2516q88mqh.apps.googleusercontent.com"
-									buttonText="Entrar com Google"
+									buttonText="Inscreva-se com Google"
 									onSuccess={responseGoogle}
 									onFailure={responseGoogle}
 									className="google-button"
 								/>
 							</div>
 						</FormGroup>
+						<FormGroup>
+							<Input
+								name="username"
+								value={username}
+								onChange={e => setUsername(e.target.value)}
+								placeholder="Nome de usuário"
+								required
+							/>
+						</FormGroup>
+
+						<FormGroup>
+							<Input
+								name="email"
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+								type="email"
+								placeholder="Email"
+								required
+							/>
+						</FormGroup>
+
+						<FormGroup>
+							<Input
+								name="password"
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+								type="password"
+								placeholder="Senha"
+								required
+							/>
+						</FormGroup>
+
+						<FormGroup>
+							<Button className="register-button" type="submit">Cadastrar-se</Button>
+						</FormGroup>
+
+						<FormGroup className="termos-group">
+							<h6>Ao clicar em “Cadastrar-se”, você concorda com os termos e condições.</h6>
+						</FormGroup>
+
+						<FormGroup className="login-group">
+							<h6>Já possui cadastro?</h6>
+							<Link to="/session" className="link-login">Entrar</Link>
+						</FormGroup>
+
 					</Form>
 				</footer>
 			</Container>

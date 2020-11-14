@@ -1,0 +1,80 @@
+.home-page .home-btns {
+  background: #669999;
+  border: none;
+  font-weight: 600;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+
+.home-page .home-btns:hover {
+	background: #527272;
+}
+
+.home-page .btn-links {
+  text-decoration: none;
+  color: #fff;
+}
+
+.first-container .slogan {
+  text-align: center;
+}
+
+.first-container .saiba-mais-btn {
+  width: 20%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.second-container {
+  margin-top: 40px;
+}
+
+.find-abrigos {
+  background:#bdd3d3;
+}
+
+.find-abrigos main {
+  width: 75%;
+  margin: auto;
+  margin-top: 10%;
+  padding: 25px;
+  text-align: center;
+}
+
+.find-abrigos main p {
+  margin: 25px 0;
+  color: #f3f3f3;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.depoimento-wbackground {
+  background:#bdd3d3;
+  padding: 50px 50px 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.home-page .depoimento-content {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.home-page .depoimento-title {
+  font-weight: 500;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.second-container .depoimentos-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.depoimentos-box .depoimentos {
+  padding: 80px;
+  margin: auto;
+  text-align: center;
+}

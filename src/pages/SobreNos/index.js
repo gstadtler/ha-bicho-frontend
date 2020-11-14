@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap';
 
 import MenuNavbar from '../../components/MenuNavbar';
 
-import logotipoVerde from '../../imagens/logotipo-verde.svg';
 import './styles.css';
 
 function SobreNos() {

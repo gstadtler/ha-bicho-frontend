@@ -8,6 +8,7 @@ import {
 	Collapse,
 	Navbar,
 	NavbarToggler,
+	NavbarBrand,
 	Nav,
 	NavItem,
 	Button
@@ -25,16 +26,15 @@ function MenuNavbar() {
 	return (
 		<>
 			<Navbar light expand="md" className="menu-navbar">
+				<NavbarBrand>
+					<Link to="/">
+						<FaHome />
+					</Link>
+				</NavbarBrand>
 				<NavbarToggler onClick={toggle} />
 				<Collapse isOpen={isOpen} navbar>
 
 					<Nav className="mr-auto" navbar>
-
-						<NavItem>
-							<Link to="/">
-								<FaHome />
-							</Link>
-						</NavItem>
 
 						<NavItem className="mr-3 ml-3">
 							<Link to="/sobre-nos" className="link-navbar">Sobre nós</Link>

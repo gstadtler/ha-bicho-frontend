@@ -1,14 +1,27 @@
+.formulario-contato label {
+	font-weight: bold;
+}
+
 .contato-form {
 	display: flex;
 }
 
-form .input-form {
+.formulario-contato .input-form {
 	background: #E5E5E5;
 	margin-left: 100px;
 }
 
-form .send-button {
+.formulario-contato .contato-form-btn{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.formulario-contato .send-button {
 	background: #669999;
 	width: 35%;
-	align-self: flex-end;
+	transition: background 0.2s;
+}
+
+.formulario-contato .send-button:hover {
+	background: #527272;
 }

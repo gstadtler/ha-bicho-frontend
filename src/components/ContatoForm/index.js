@@ -10,13 +10,13 @@ import {
 import "./styles.css";
 
 
-function ContatoForm(props) {
+function ContatoForm() {
 
-	async function handleSubmit(data, { reset }) {
+	async function handleSubmit(e) {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit}>
+		<Form onSubmit={handleSubmit} className="formulario-contato">
 			<FormGroup className="contato-form">
 				<Label>Nome</Label>
 				<Input name="nome" className="input-form" required/>
@@ -29,8 +29,9 @@ function ContatoForm(props) {
 				<Label>Texto</Label>
 				<Input name="mensagem" type="textarea" className="input-form" required />
 			</FormGroup>
-			
-			<Button className="send-button" type="submit">Enviar</Button>
+			<FormGroup className="contato-form-btn">
+				<Button className="send-button" type="submit">Enviar</Button>
+			</FormGroup>
 		</Form>
 	);
 }

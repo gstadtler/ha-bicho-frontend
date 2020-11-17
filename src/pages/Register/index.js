@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { login } from '../../services/auth';
 import MenuNavbar from '../../components/MenuNavbar';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebookF } from 'react-icons/fa';
 
 import {
 	Container,
@@ -20,7 +20,7 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
 
-function Register() {
+function Register(props) {
 
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
@@ -31,17 +31,19 @@ function Register() {
 
 	async function handleSignUp(e) {
 		e.preventDefault();
+		const role = 'doador';
     try {
       const novoUsuario = {
 				username,
 				email,
-				password
+				password,
+				role
       }
-      console.log(novoUsuario);
       const response = await api.post("/users", novoUsuario);
-      console.log(response);
       if (response.status === 200) {
-        alert("Agora você pode ajudar vários bichinhos de uma forma mais fácil e transparente!");
+				alert("Agora você pode ajudar vários bichinhos de uma forma mais fácil e transparente!");
+				login(response.data.token);
+				props.history.push("/");
       } else {
         alert("Houve algum erro durante o cadastro :(");
       }
@@ -81,10 +83,10 @@ function Register() {
 							<div className="login-fb">
 								<FacebookLogin
 									appId="398864984824000"
-									fields="name,email,picture"
+									fields="name,email"
 									scope="public_profile,user_friends"
 									callback={responseFacebook}
-									icon={<FaFacebook />}
+									icon={<FaFacebookF />}
 									textButton="Inscreva-se com Facebook"
 									cssClass="facebook-button"
 								/>

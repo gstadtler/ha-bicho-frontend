@@ -10,6 +10,8 @@ import {
 } from 'reactstrap';
 
 import api from '../../services/api';
+import { login } from '../../services/auth';
+
 import logotipoAzul from "../../imagens/logotipo-azul.svg"
 import "./styles.css";
 
@@ -18,6 +20,7 @@ function AbrigoForm(props) {
   const [cnpj_cpf, setCnpj_cpf] = useState('');
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
   const [descricao, setDescricao] = useState('');
   const [qtd_animais, setQtd_animais] = useState();
   const [telefone, setTelefone] = useState('');
@@ -27,6 +30,28 @@ function AbrigoForm(props) {
   const [bairro, setBairro] = useState('');
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
+
+  async function handleCreateAbrigoUser(e) {
+    e.preventDefault();
+    const abrigoRole = 'abrigo';
+    try {
+      const response = await api.post("/users", {
+        username: nome,
+        email: email,
+        password: senha,
+        role: abrigoRole
+      });
+      if (response.status === 200) {
+        alert("Sucesso ao cadastrar, lembre-se que para fazer login você precisará do seu email e senha!");
+        login(response.data.token);
+				props.history.push("/");
+      } else {
+        alert("Houve algum erro ao cadastrar seu abrigo :(");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   async function handleSubmitForm(e) {
     e.preventDefault();
@@ -45,11 +70,9 @@ function AbrigoForm(props) {
         cidade,
         uf
       }
-      console.log(novoAbrigo);
       const response = await api.post("/abrigos", novoAbrigo);
-      console.log(response);
       if (response.status === 200) {
-        alert("Abrigo cadastrado com sucesso!");
+        handleCreateAbrigoUser(e);
       } else {
         alert("Houve algum erro ao cadastrar seu abrigo :(");
       }
@@ -57,7 +80,7 @@ function AbrigoForm(props) {
       console.log(err);
     };
     props.setModal();
-  }
+  };
 
   return (
     <Form onSubmit={handleSubmitForm} className="abrigo-form">
@@ -82,11 +105,11 @@ function AbrigoForm(props) {
         </Col>
         <Col>
           <FormGroup>
-            <Label>Nome do Abrigo</Label>
+            <Label>Telefone</Label>
             <Input
-              name="nome"
-              value={nome}
-              onChange={e => setNome(e.target.value)}
+              name="telefone"
+              value={telefone}
+              onChange={e => setTelefone(e.target.value)}
               required
             />
           </FormGroup>
@@ -96,23 +119,35 @@ function AbrigoForm(props) {
       <Row>
         <Col>
           <FormGroup>
+            <Label>Nome do Abrigo</Label>
+            <Input
+              name="nome"
+              value={nome}
+              onChange={e => setNome(e.target.value)}
+              required
+            />
+          </FormGroup>
+        </Col>
+        <Col>
+          <FormGroup>
             <Label>Email</Label>
             <Input
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               type="email"
+              required
             />
           </FormGroup>
         </Col>
         <Col>
           <FormGroup>
-            <Label>Descrição</Label>
+            <Label>Senha para Login</Label>
             <Input
-              name="descricao"
-              value={descricao}
-              onChange={e => setDescricao(e.target.value)}
-              type="textarea"
+              name="senha"
+              value={senha}
+              onChange={e => setSenha(e.target.value)}
+              type="password"
               required
             />
           </FormGroup>
@@ -133,11 +168,12 @@ function AbrigoForm(props) {
         </Col>
         <Col>
           <FormGroup>
-            <Label>Telefone</Label>
+            <Label>Descrição</Label>
             <Input
-              name="telefone"
-              value={telefone}
-              onChange={e => setTelefone(e.target.value)}
+              name="descricao"
+              value={descricao}
+              onChange={e => setDescricao(e.target.value)}
+              type="textarea"
               required
             />
           </FormGroup>

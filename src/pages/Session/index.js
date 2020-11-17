@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { login } from "../../services/auth";
 import MenuNavbar from '../../components/MenuNavbar';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebookF } from 'react-icons/fa';
 
 import {
 	Container,
@@ -72,10 +72,10 @@ function Session(props) {
 							<div className="login-fb">
 								<FacebookLogin
 									appId="398864984824000"
-									fields="name,email,picture"
+									fields="name,email"
 									scope="public_profile,user_friends"
 									callback={responseFacebook}
-									icon={<FaFacebook />}
+									icon={<FaFacebookF />}
 									textButton="Entrar com Facebook"
 									cssClass="facebook-button"
 								/>

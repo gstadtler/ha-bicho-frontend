@@ -24,7 +24,7 @@
 
 .Register .termos-group{
 	display: flex;
-	justify-content: center;
+	text-align: center;
 }
 
 .Register .register-button {

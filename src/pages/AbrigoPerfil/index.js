@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import MenuNavbar from '../../components/MenuNavbar';
 import api from '../../services/api';
@@ -34,7 +35,7 @@ function AbrigoPerfil(props) {
 					</header>
 					<footer>
 						<button>Prestação de contas</button>
-						<button>Doar</button>	
+						<button><Link to="/doacoes">Doar</Link></button>	
 					</footer>
 				</div>
 			</div>

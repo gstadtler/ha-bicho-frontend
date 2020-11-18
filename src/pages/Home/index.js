@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'reactstrap';
 
 import NavbarResponsive from '../../components/NavbarResponsive';
-//import AbrigosMap from '../../components/AbrigosMap';
+import AbrigosMap from '../../components/AbrigosMap';
 
 import './styles.css';
 import logo from '../../imagens/logo.svg';
@@ -38,8 +38,8 @@ function Home() {
 
       <Container className="second-container" fluid={true}>
         <Row>
-          <Col lg="6" md="6" sm="12" className="p-4">
-            {/*<AbrigosMap />*/}
+          <Col lg="6" md="6" sm="12" className="p-4 abrigos-map">
+            <AbrigosMap />
           </Col>
           <Col className="find-abrigos">
             <main>
@@ -83,7 +83,7 @@ function Home() {
           <Col className="depoimentos">
             <Row className="depoimento-content">
               <p>“Recebo o acompanhamento do meu afilhado 
-                peludo toda semana por e-mail”
+                peludo toda semana por e-mail.”
               </p>
             </Row>
             <Row className="depoimento-title">

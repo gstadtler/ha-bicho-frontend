@@ -66,15 +66,15 @@
   font-weight: 500;
   font-size: 15px;
   font-style: italic;
+  justify-content: center;
 }
 
 .second-container .depoimentos-box {
   display: flex;
   justify-content: space-around;
+  text-align: center;
 }
 
 .depoimentos-box .depoimentos {
-  padding: 80px;
-  margin: auto;
-  text-align: center;
+  padding: 50px 80px 0;
 }

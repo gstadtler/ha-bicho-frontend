@@ -9,6 +9,7 @@ import SobreNos from './pages/SobreNos';
 import Contato from './pages/Contato';
 import AbrigoPerfil from './pages/AbrigoPerfil';
 import Faq from './pages/Faq';
+import Doacoes from './pages/Doacoes';
 import Session from './pages/Session';
 
 
@@ -39,6 +40,7 @@ function Routes() {
 				<Route path="/contato" component={Contato} />
 				<Route path="/perfil-abrigo/:abrigoId" component={AbrigoPerfil} />
 				<Route path="/faq" component={Faq} />
+				<Route path="/doacoes" component={Doacoes} />
 				<Route path="*" component={() => <h1>Page not found</h1>} />
 			</Switch>
 		</BrowserRouter>

@@ -10,7 +10,7 @@
 }
 
 .abrigo-form .address-field{
-	margin-top: 50px;
+	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
@@ -38,5 +38,17 @@
 
 .abrigo-form .submit-button {
 	margin: auto;
+}
+
+.abrigo-form .location-access {
+	justify-content: center;
+	display: flex;
+	margin: auto;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+.abrigo-form .btn-permitir {
+	margin-top: 10px;
 }
   

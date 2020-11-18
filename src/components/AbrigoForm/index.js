@@ -31,6 +31,16 @@ function AbrigoForm(props) {
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
 
+  function handleLocationAccess() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position);
+      }, function(error){
+        console.log(error);
+      })
+    }
+  }
+
   async function handleCreateAbrigoUser(e) {
     e.preventDefault();
     const abrigoRole = 'abrigo';
@@ -44,7 +54,7 @@ function AbrigoForm(props) {
       if (response.status === 200) {
         alert("Sucesso ao cadastrar, lembre-se que para fazer login você precisará do seu email e senha!");
         login(response.data.token);
-				props.history.push("/");
+        props.history.push("/");
       } else {
         alert("Houve algum erro ao cadastrar seu abrigo :(");
       }
@@ -180,8 +190,41 @@ function AbrigoForm(props) {
         </Col>
       </Row>
 
+      <h4>Acesso à localização</h4>
+      <Row className="location-access">
+        <Col>
+          <p style={{ fontWeight: "600" }}>
+            Para podermos exibir seu abrigo no nosso mapa de abrigos,
+            precisamos que você permita nosso acesso à sua localização.
+          <br />
+          <span style={{
+            fontStyle: "italic",
+            fontWeight: "bold",
+            color: "#333366"}}
+          >
+            Não se preocupe, a localização não será usada
+            para nada além de mostrar o seu abrigo no mapa.
+          </span>
+          </p>
+        </Col>
+        <Col>
+          <p>
+            <h6 style={{ fontWeight: "bold" }}>
+              Benefício de permitir o acesso
+            </h6>
+            <span style={{fontWeight: "600"}}>
+              Os possíveis doadores que acessarem nosso site
+              irão poder ver e acessar seu abrigo facilmente e mais rápido, aumentando
+              as chances de doação! 
+            </span>
+            <Button className="btn-permitir" onClick={handleLocationAccess}>Permitir</Button>
+          </p>
+        </Col>
+      </Row>
+
       <FormGroup className="endereco">
         <Label className="address-field">Endereço</Label>
+
         <Row>
 
           <Col>

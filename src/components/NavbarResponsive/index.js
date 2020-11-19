@@ -55,7 +55,7 @@ function NavbarResponsive() {
 						</NavItem>
 
 						<NavItem className="mr-2 ml-2">
-							<Link to="/session" className="link-navbar">Log in</Link>
+							<Link to="/login" className="link-navbar">Log in</Link>
 						</NavItem>
 
 						<NavItem className="mr-2 ml-2">

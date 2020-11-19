@@ -10,7 +10,7 @@ import Contato from './pages/Contato';
 import AbrigoPerfil from './pages/AbrigoPerfil';
 import Faq from './pages/Faq';
 import Doacoes from './pages/Doacoes';
-import Session from './pages/Session';
+import Login from './pages/Login';
 
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -35,7 +35,7 @@ function Routes() {
 				<Route path="/" exact component={Home} />
 				<Route path="/abrigos" component={Abrigos} />
 				<Route path="/register" component={Register} />
-				<Route path="/session" component={Session} />
+				<Route path="/login" component={Login} />
 				<Route path="/sobre-nos" component={SobreNos} />
 				<Route path="/contato" component={Contato} />
 				<Route path="/perfil-abrigo/:abrigoId" component={AbrigoPerfil} />

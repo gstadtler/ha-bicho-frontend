@@ -39,7 +39,7 @@ function Register(props) {
 				password,
 				role
       }
-      const response = await api.post("/users", novoUsuario);
+			const response = await api.post("/register", novoUsuario);
       if (response.status === 200) {
 				alert("Agora você pode ajudar vários bichinhos de uma forma mais fácil e transparente!");
 				login(response.data.token);
@@ -143,7 +143,7 @@ function Register(props) {
 
 						<FormGroup className="login-group">
 							<h6>Já possui cadastro?</h6>
-							<Link to="/session" className="link-login">Entrar</Link>
+							<Link to="/login" className="link-login">Entrar</Link>
 						</FormGroup>
 
 					</Form>

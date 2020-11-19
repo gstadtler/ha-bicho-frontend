@@ -20,10 +20,11 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
 
-function Session(props) {
+function Login(props) {
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [currentUser, setCurrentUser] = useState('');
 
 	//const [login, setLogin] = useState(false);
 	//const [data, setData] = useState({});
@@ -33,7 +34,8 @@ function Session(props) {
 		e.preventDefault();
 		const userSession = { email, password };
 		try {
-			const response = await api.post("/sessions", userSession);
+			const response = await api.post("/login", userSession);
+			setCurrentUser(response.data);
 			login(response.data.token);
 			props.history.push("/");
 		} catch (err) {
@@ -129,4 +131,4 @@ function Session(props) {
 	);
 }
 
-export default Session;
+export default Login;

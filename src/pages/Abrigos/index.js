@@ -9,8 +9,6 @@ import {
 	CardText,
 } from 'reactstrap';
 
-import MenuNavbar from '../../components/MenuNavbar';
-
 import './styles.css';
 import api from '../../services/api';
 
@@ -36,7 +34,6 @@ function Abrigos() {
 
 	return (
 		<>
-			<MenuNavbar />
 			<h1 className="titulo-abrigos">Lista de Abrigos</h1>
 			<Card style={{border: "none"}}>
 				{abrigos.map(abrigo =>

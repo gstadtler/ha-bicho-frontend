@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import MenuNavbar from '../../components/MenuNavbar';
 import ContatoForm from '../../components/ContatoForm';
 
 import './styles.css'
@@ -10,7 +9,6 @@ function Contato() {
 
 	return (
 		<>
-			<MenuNavbar />
 			<Container id="contato-page" fluid={true}>
 				<Row className="ml-4">
 					<h1>Contato</h1>

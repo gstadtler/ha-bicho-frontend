@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'reactstrap';
 
-import NavbarResponsive from '../../components/NavbarResponsive';
 import AbrigosMap from '../../components/AbrigosMap';
 
 import './styles.css';
@@ -11,9 +10,9 @@ import pets from '../../imagens/pets2.svg';
 
 
 function Home() {
+
   return (
     <div className="home-page">
-      <NavbarResponsive />
       <Container className="mt-5 first-container" fluid={true}>
         <Row>
           <img src={pets} alt="Ha-bicho" style={{ height: 'max-content', width: '100%' }} />

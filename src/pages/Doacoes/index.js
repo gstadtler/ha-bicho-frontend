@@ -1,11 +1,8 @@
 import React from 'react';
 
-import MenuNavbar from '../../components/MenuNavbar';
-
-function Doacoes() {
+function Doacoes(props) {
   return (
     <>
-      <MenuNavbar />
       <h1>Formas de Ajudar</h1>
     </>
   );

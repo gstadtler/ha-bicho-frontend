@@ -1,14 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import MenuNavbar from '../../components/MenuNavbar';
-
 import './styles.css';
 
 function SobreNos() {
 	return (
 		<>
-			<MenuNavbar />
 			<div id="sobre-nos">
 				<h1>Sobre Nós</h1>
 				<Container className="w-50 h-auto sb-nos">

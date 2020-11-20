@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 
 import api from '../../services/api';
-import { login } from '../../services/auth';
+import { login, setCurrentUser, setUserRole } from '../../services/auth';
 
 import logotipoAzul from "../../imagens/logotipo-azul.svg"
 import "./styles.css";
@@ -22,7 +22,7 @@ function AbrigoForm(props) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [descricao, setDescricao] = useState('');
-  const [qtd_animais, setQtd_animais] = useState();
+  const [qtd_animais, setQtd_animais] = useState('');
   const [telefone, setTelefone] = useState('');
   const [rua, setRua] = useState('');
   const [numero, setNumero] = useState('');
@@ -30,6 +30,8 @@ function AbrigoForm(props) {
   const [bairro, setBairro] = useState('');
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
+  const abrigoRole = 'abrigo';
+
 
   function handleLocationAccess() {
     if ('geolocation' in navigator) {
@@ -41,29 +43,30 @@ function AbrigoForm(props) {
     }
   }
 
-  async function handleCreateAbrigoUser(e) {
+  async function handleAbrigoUser(e) {
     e.preventDefault();
-    const abrigoRole = 'abrigo';
     try {
-      const response = await api.post("/users", {
+      const abrigoUser = {
         username: nome,
         email: email,
         password: senha,
         role: abrigoRole
-      });
-      if (response.status === 200) {
-        alert("Sucesso ao cadastrar, lembre-se que para fazer login você precisará do seu email e senha!");
-        login(response.data.token);
-        props.history.push("/");
-      } else {
-        alert("Houve algum erro ao cadastrar seu abrigo :(");
       }
-    } catch (err) {
-      console.log(err);
+      const response = await api.post("/register", abrigoUser);
+      if (response.status === 200) {
+        alert("Sucesso ao cadastrar! Para fazer login você precisará do seu email e senha!");
+        setUserRole(response.data.role);
+        login(response.data.token);
+      } else {
+        alert("Houve algum erro ao cadastrar.");
+      }
+    } catch (error) {
+      console.log(error);
     }
+    props.setModal();
   };
 
-  async function handleSubmitForm(e) {
+  async function handleCreateAbrigo(e) {
     e.preventDefault();
     try {
       const novoAbrigo = {
@@ -82,18 +85,18 @@ function AbrigoForm(props) {
       }
       const response = await api.post("/abrigos", novoAbrigo);
       if (response.status === 200) {
-        handleCreateAbrigoUser(e);
+        setCurrentUser(response.data);
+        handleAbrigoUser(e);
       } else {
-        alert("Houve algum erro ao cadastrar seu abrigo :(");
+        alert("Houve algum erro ao cadastrar.")
       }
-    } catch (err) {
-      console.log(err);
-    };
-    props.setModal();
-  };
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <Form onSubmit={handleSubmitForm} className="abrigo-form">
+    <Form onSubmit={handleCreateAbrigo} className="abrigo-form">
       <img
         src={logotipoAzul}
         alt="Ha-bicho"

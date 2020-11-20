@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
-import { login } from '../../services/auth';
-import MenuNavbar from '../../components/MenuNavbar';
+import { login, setCurrentUser, setUserRole } from '../../services/auth';
 import { FaFacebookF } from 'react-icons/fa';
 
 import {
@@ -42,6 +41,8 @@ function Register(props) {
 			const response = await api.post("/register", novoUsuario);
       if (response.status === 200) {
 				alert("Agora você pode ajudar vários bichinhos de uma forma mais fácil e transparente!");
+				setCurrentUser(response.data);
+				setUserRole(response.data.role);
 				login(response.data.token);
 				props.history.push("/");
       } else {
@@ -70,7 +71,6 @@ function Register(props) {
 
 	return (
 		<>
-			<MenuNavbar />
 			<Container className="Register" fluid={true}>
 				<header>
 					<h1>Cadastro</h1>

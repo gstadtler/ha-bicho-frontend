@@ -15,7 +15,7 @@ import {
 } from 'reactstrap';
 
 
-function NavbarResponsive() {
+function HomeNavbar() {
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -76,4 +76,4 @@ function NavbarResponsive() {
 	);
 }
 
-export default NavbarResponsive;
+export default HomeNavbar;

@@ -1,30 +1,14 @@
-#Abrigo-perfil h1 {
-	color: #669999;
-	margin-top: 80px;
-	margin-bottom: 30px;
-	text-align: center;
+.abrigo-perfil {
+	background: #bdd3d3;
+	padding: 50px;
+	font-weight: 600;
+	font-size: 16px;
 }
 
-#Abrigo-perfil header{
-	background: #669999;
+.abrigo-perfil .link-doacao {
+	text-decoration: none;
 	color: #ffffff;
-	border-radius: 6px;
-	text-align: center;
-	width: 50%;
-	margin: auto;
+	font-weight: 600;
+	font-size: 16px;
 }
 
-#Abrigo-perfil footer {
-	display: flex;
-	gap: 30px;
-	justify-content: space-around;
-	align-items: center;
-	margin-top: 50px;
-}
-
-#Abrigo-perfil footer button {
-	background: #669999;
-	width: fit-content;
-	height: 10vh;
-	
-}

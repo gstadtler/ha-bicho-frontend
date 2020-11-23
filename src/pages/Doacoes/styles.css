@@ -1,0 +1,58 @@
+.doacoes-page .titulo-doacoes{
+  color: #ffffff;
+  margin-bottom: 35px;
+}
+.doacoes-page {
+  background: #bdd3d3;
+  width: 100%;
+  padding: 80px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.doacoes-page .doacoes-cards {
+  height: 100%;
+}
+
+.doacoes-page .doacoes-cards .card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.doacoes-page .doacoes-cards .card-content .content-text {
+  text-align: left;
+  margin: auto 0;
+}
+
+.doacoes-page .doacoes-cards .doacoes-img {
+  margin-top: 50px;
+  width: 100%;
+  height: 30%;
+}
+
+.doacoes-cards .doacao-btn-active {
+  border: none;
+  background: #669999;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.doacoes-cards .doacao-btn-active .donate-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.doacoes-cards .doacao-btn-active:hover {
+	background: #527272;
+}
+
+.doacoes-cards .doacao-btn {
+  display: contents;
+  border: none;
+  background: #86afaf;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+

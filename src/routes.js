@@ -13,6 +13,8 @@ import Register from './pages/Register';
 import AbrigoPerfil from './pages/AbrigoPerfil';
 import UserPerfil from './pages/UserPerfil';
 import Doacoes from './pages/Doacoes';
+import Payments from './pages/Payments';
+import Transparencia from './pages/Transparencia';
 
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -66,9 +68,9 @@ function Routes() {
 						<Login {...props} />
 					</WithNavigation>
 				}/>
-				<Route path="/register" exact render={() => 
+				<Route path="/register" exact render={props => 
 					<WithNavigation>
-						<Register />
+						<Register {...props} />
 					</WithNavigation>
 				}/>
 				<Route path="/perfil-abrigo/:abrigoId" exact render={props => 
@@ -76,8 +78,14 @@ function Routes() {
 						<AbrigoPerfil {...props} />
 					</WithNavigation>
 				}/>
+				<Route path="/transparencia/abrigo-gastos" exact render={props => 
+					<WithNavigation>
+						<Transparencia {...props} />
+					</WithNavigation>
+				}/>
 				
 				<PrivateRoute path="/doacoes" exact component={Doacoes} />
+				<PrivateRoute path="/payments" exact component={Payments} />
 				<PrivateRoute path="/meu-perfil" exact component={UserPerfil} />
 
 				<Route path="*" component={() => <h1>Page not found</h1>} />

@@ -25,9 +25,6 @@ function Register(props) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const [loggedIn, setLoggedIn] = useState(false);
-	const [userData, setUserData] = useState({});
-
 	async function handleSignUp(e) {
 		e.preventDefault();
 		const role = 'doador';
@@ -55,18 +52,25 @@ function Register(props) {
 	}
 
 	function responseFacebook(response) {
-		console.log(response);
-		setUserData(response);
-		if (response.accessToken) {
-			setLoggedIn(true);
+		if (response) {
+			setCurrentUser(response);
+			setUserRole("doador");
 			login(response.accessToken);
+			props.history.push("/");
 		} else {
-			setLoggedIn(false);
+			alert("Houve algum erro ao cadastrar-se.");
 		}
 	}
 
 	function responseGoogle(response) {
-		console.log(response);
+		if(response) {
+			setCurrentUser(response.profileObj);
+			setUserRole("doador");
+			login(response.accessToken);
+			props.history.push("/");
+		} else {
+			alert("Houve algum erro ao cadastrar-se.");
+		}
 	}
 
 	return (

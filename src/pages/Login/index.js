@@ -54,18 +54,25 @@ function Login(props) {
 
 
   function responseFacebook(response) {
-    console.log(response);
-    //setData(response);
-    //setPicture(response.picture.data.url);
-    //if (response.accessToken) {
-    //setLogin(true);
-    //} else {
-    //setLogin(false);
-    //}
+    if(response) {
+      setCurrentUser(response);
+      setUserRole("doador");
+      login(response.accessToken);
+      props.history.push("/");
+    } else {
+			alert("Houve algum erro ao logar.");
+    }
   }
 
   function responseGoogle(response) {
-    console.log(response);
+    if(response) {
+			setCurrentUser(response.profileObj);
+			setUserRole("doador");
+			login(response.accessToken);
+			props.history.push("/");
+		} else {
+			alert("Houve algum erro ao cadastrar-se.");
+		}
   }
 
   return (

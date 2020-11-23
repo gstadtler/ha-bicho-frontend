@@ -12,7 +12,7 @@ import { isAuthenticated } from '../../services/auth';
  */
 function WithNavigation(props) {
   return (
-    <div>
+    <>
       {isAuthenticated() ? (
         <UserNavbar />
       ) : (
@@ -23,7 +23,7 @@ function WithNavigation(props) {
         {props.children}
       </div>
 
-    </div>
+    </>
   )
 }
 

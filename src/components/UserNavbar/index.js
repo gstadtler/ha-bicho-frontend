@@ -30,7 +30,7 @@ function UserNavbar(props) {
 
   return (
     <>
-      <Navbar light expand="md" className="responsive-navbar">
+      <Navbar light expand="md" className="user-navbar">
         <NavbarBrand>
           <Link to="/">
             <FaHome />
@@ -64,7 +64,7 @@ function UserNavbar(props) {
             </NavItem>
 
             <NavItem className="mr-2 ml-2">
-              <Button onClick={handleLogout}>Log out</Button>
+              <Button onClick={handleLogout} className="logout-btn">Log out</Button>
             </NavItem>
 
           </Nav>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+/*import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 import './styles.css';
@@ -28,3 +28,4 @@ const AbrigosMap = () => {
 };
 
 export default AbrigosMap;
+*/

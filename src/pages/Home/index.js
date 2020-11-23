@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'reactstrap';
 
-import AbrigosMap from '../../components/AbrigosMap';
+//import AbrigosMap from '../../components/AbrigosMap';
+import mapboxSt from '../../imagens/mapbox-st.jpg';
 
 import './styles.css';
 import logo from '../../imagens/logo.svg';
@@ -38,7 +39,8 @@ function Home() {
       <Container className="second-container" fluid={true}>
         <Row>
           <Col lg="6" md="6" sm="12" className="p-4 abrigos-map">
-            <AbrigosMap />
+            <img src={mapboxSt} width="100%" height="100%" />
+            {/*<AbrigosMap />*/}
           </Col>
           <Col className="find-abrigos">
             <main>

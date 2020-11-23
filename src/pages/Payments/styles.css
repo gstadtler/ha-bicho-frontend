@@ -1,0 +1,41 @@
+.page-title {
+  color: #669999;
+  margin: 40px 0;
+  text-align: center;
+}
+
+.payments-page .payments-box {
+  background: #bdd3d3;
+  border-radius: 6px;
+  width: 100%;
+  margin: 0 200px;
+}
+
+.payments-page .content {
+  padding: 100px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.payments-page .content .card-bd{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.payments-page .content li{
+  margin-bottom: 20px;
+}
+
+
+
+.payments-page .content .content-img{
+  margin-top: 30px;
+  width: 100%;
+  height: 200px;
+}
+
+.payments-page .content .payments-link{
+  text-decoration: none;
+}

@@ -15,6 +15,7 @@ import UserPerfil from './pages/UserPerfil';
 import Doacoes from './pages/Doacoes';
 import Payments from './pages/Payments';
 import Transparencia from './pages/Transparencia';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -87,7 +88,7 @@ function Routes() {
 				<PrivateRoute path="/doacoes/:abrigoId/:abrigoNome" exact component={Doacoes} />
 				<PrivateRoute path="/payments/:abrigoId/:abrigoNome" exact component={Payments} />
 				<PrivateRoute path="/meu-perfil" exact component={UserPerfil} />
-
+				<PrivateRoute path="/payments/success" exact component={PaymentSuccess}/>
 				<Route path="*" component={() => <h1>Page not found</h1>} />
 			</Switch>
 		</BrowserRouter>

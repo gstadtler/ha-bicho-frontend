@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 
 import { Container, Row, Col, Card, CardImg, CardBody, 
@@ -16,12 +16,13 @@ function Payments(props) {
   const [quantia, setQuantia] = useState('');
   const [tipoDePagamento, setTipoDePagamento] = useState('');
 
+
+ 
   async function handlePayment() {
     if(tipoDePagamento === 'MP') {
-      const response = api.get(`/payments/checkout/${abrigoId}/${abrigoNome}/${quantia}`);
-      console.log(response.data);
-      //const mpCheckout = response.body.init_point;
-      //props.history.push(mpCheckout);
+      const response = await api.get(`/payments/checkout/${abrigoId}/${abrigoNome}/${quantia}`);
+      const mpCheckout = response.data.body.init_point;
+      window.open(mpCheckout,"_top")
     } else {
       alert("Houve algum erro na escolha do tipo de pagamento.")
     }

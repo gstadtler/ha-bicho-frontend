@@ -9,7 +9,8 @@ import Icon from '../../imagens/Icon.svg';
 
 function Payments(props) {
 
-  const abrigo = props.location.abrigo;
+  const abrigoId = props.match.params.abrigoId;
+  const abrigoNome = props.match.params.abrigoNome;
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const [btnColor, setBtnColor] = useState('info');
   const [quantia, setQuantia] = useState('');
@@ -17,11 +18,8 @@ function Payments(props) {
 
   async function handlePayment() {
     if(tipoDePagamento === 'MP') {
-      const response = api.post('/payments/checkout', {
-        description: `Doando para o Abrigo ${abrigo.selected.abrigo.nome}`,
-        amount: quantia
-      });
-      console.log(response);
+      const response = api.get(`/payments/checkout/${abrigoId}/${abrigoNome}/${quantia}`);
+      console.log(response.data);
       //const mpCheckout = response.body.init_point;
       //props.history.push(mpCheckout);
     } else {
@@ -47,7 +45,7 @@ function Payments(props) {
               <CardImg src={Icon} alt="Ha-bichinho" className="content-img" />
               <CardBody className="card-bd">
                 <CardTitle tag="h2">Pagamento</CardTitle>
-                <CardSubtitle tag="h6">Para: Abrigo {abrigo.selected.abrigo.nome}</CardSubtitle>
+                <CardSubtitle tag="h6">Para: Abrigo {abrigoNome}</CardSubtitle>
                 <CardText>
                   <ul style={{listStyle: "none", marginTop: "25px"}}>
                     <li>

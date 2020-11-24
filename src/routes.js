@@ -84,8 +84,8 @@ function Routes() {
 					</WithNavigation>
 				}/>
 				
-				<PrivateRoute path="/doacoes" exact component={Doacoes} />
-				<PrivateRoute path="/payments" exact component={Payments} />
+				<PrivateRoute path="/doacoes/:abrigoId/:abrigoNome" exact component={Doacoes} />
+				<PrivateRoute path="/payments/:abrigoId/:abrigoNome" exact component={Payments} />
 				<PrivateRoute path="/meu-perfil" exact component={UserPerfil} />
 
 				<Route path="*" component={() => <h1>Page not found</h1>} />

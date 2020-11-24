@@ -15,8 +15,8 @@ import padrin from '../../imagens/padrin.svg';
 
 function Doacoes(props) {
 
-  const selected = props.location.abrigo;
-  console.log(selected);
+  const id = props.match.params.abrigoId;
+  const nome = props.match.params.abrigoNome;
 
   return (
     <div className="doacoes-page">
@@ -31,7 +31,7 @@ function Doacoes(props) {
                 <CardText className="content-text"><li>Preço mínimo de R$ 5,00</li></CardText>
                 <Button className="doacao-btn-active">
                   <Link 
-                    to={{pathname: "/payments", abrigo: {selected}}} 
+								    to={`/payments/${id}/${nome}`}
                     className="donate-link"
                   >
                     Doar

@@ -60,10 +60,7 @@ function AbrigoPerfil(props) {
 						</CardText>
 						<Button color="info">
 							<Link
-								to={{
-									pathname: "/doacoes",
-									abrigo: { abrigo }
-								}}
+								to={`/doacoes/${abrigo.id}/${abrigo.nome}`}
 								className="link-doacao"
 							>
 								Contribuir
@@ -96,10 +93,7 @@ function AbrigoPerfil(props) {
 					<CardText>Nos ajude a manter nossos amiguinhos felizes e saudáveis!</CardText>
 					<Button style={{ backgroundColor: '#333366' }}>
 						<Link
-							to={{
-								pathname: "/doacoes",
-								abrigo: { abrigo }
-							}}
+							to={`/doacoes/${abrigo.id}/${abrigo.nome}`}
 							className="link-doacao"
 						>
 							Doar

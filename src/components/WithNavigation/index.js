@@ -2,7 +2,6 @@ import React from 'react';
 
 import UserNavbar from '../UserNavbar';
 import MenuNavbar from '../MenuNavbar';
-import HomeNavbar from '../HomeNavbar';
 
 import { isAuthenticated } from '../../services/auth';
 
@@ -14,9 +13,9 @@ function WithNavigation(props) {
   return (
     <>
       {isAuthenticated() ? (
-        <UserNavbar />
+        <UserNavbar {...props} />
       ) : (
-          <HomeNavbar />
+          <MenuNavbar />
         )}
 
       <div>

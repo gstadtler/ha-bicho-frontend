@@ -17,17 +17,17 @@ const items = [
   {
     src: pets0,
     altText: 'Slide 1',
-    caption: 'Slide 1'
+    caption: ''
   },
   {
     src: pets01,
     altText: 'Slide 2',
-    caption: 'Slide 2'
+    caption: ''
   },
   {
     src: pets02,
     altText: 'Slide 3',
-    caption: 'Slide 3'
+    caption: ''
   }
 ];
 
@@ -60,7 +60,7 @@ const SlideShow = (props) => {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} />
-        <CarouselCaption />
+        <CarouselCaption captionText={item.caption} />
       </CarouselItem>
     );
   });

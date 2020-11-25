@@ -24,6 +24,11 @@ function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  //Sign In with social media
+	const [userData, setUserData] = useState('');
+	const [fbError, setFbError] = useState('');
+	const [googleError, setGoogleError] = useState('');
+
   async function handleSignIn(e) {
     e.preventDefault();
     const userSession = { email, password };
@@ -37,22 +42,36 @@ function Login(props) {
   }
 
   function responseFacebook(response) {
-    if(response) {
-      login(response.accessToken);
-      props.history.push("/");
-    } else {
-			alert("Houve algum erro ao logar.");
-    }
-  }
-
-  function responseGoogle(response) {
-    if(response) {
-			login(response.accessToken);
-			props.history.push("/");
+		if (response) {
+			if (!response.status) {
+				setUserData(response);
+				console.log(userData);
+				login(response.accessToken);
+				props.history.push("/");
+			} else {
+				setFbError(response);
+				console.log(fbError);
+			}
 		} else {
 			alert("Houve algum erro ao cadastrar-se.");
 		}
-  }
+	}
+
+  function responseGoogle(response) {
+		if(response) {
+			if (!response.error) {
+				setUserData(response.profileObj);
+				console.log(userData);
+				login(response.accessToken);
+				props.history.push("/");
+			} else {
+				setGoogleError(response);
+				console.log(googleError);
+			}
+		} else {
+			alert("Houve algum erro ao cadastrar-se.");
+		}
+	}
 
   return (
     <>

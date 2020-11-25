@@ -26,6 +26,12 @@ function Register(props) {
 	const [password, setPassword] = useState('');
 	const role = 'doador';
 
+	//Sign Up with social media
+	const [userData, setUserData] = useState('');
+	const [fbError, setFbError] = useState('');
+	const [googleError, setGoogleError] = useState('');
+
+
 	async function handleSignUp(e) {
 		e.preventDefault();
     try {
@@ -51,8 +57,15 @@ function Register(props) {
 
 	function responseFacebook(response) {
 		if (response) {
-			login(response.accessToken);
-			props.history.push("/");
+			if (!response.status) {
+				setUserData(response);
+				console.log(userData);
+				login(response.accessToken);
+				props.history.push("/");
+			} else {
+				setFbError(response);
+				console.log(fbError);
+			}
 		} else {
 			alert("Houve algum erro ao cadastrar-se.");
 		}
@@ -60,8 +73,15 @@ function Register(props) {
 
 	function responseGoogle(response) {
 		if(response) {
-			login(response.accessToken);
-			props.history.push("/");
+			if (!response.error) {
+				setUserData(response.profileObj);
+				console.log(userData);
+				login(response.accessToken);
+				props.history.push("/");
+			} else {
+				setGoogleError(response);
+				console.log(googleError);
+			}
 		} else {
 			alert("Houve algum erro ao cadastrar-se.");
 		}

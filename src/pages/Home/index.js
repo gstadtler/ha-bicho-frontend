@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'reactstrap';
+import {
+  Container, Row, Col, Button,
+  Card, CardBody
+} from 'reactstrap';
 
 //import AbrigosMap from '../../components/AbrigosMap';
 import mapboxSt from '../../imagens/mapbox-st.jpg';
@@ -10,7 +13,9 @@ import logo from '../../imagens/logo.svg';
 import pets from '../../imagens/pets2.svg';
 
 
-function Home() {
+function Home(props) {
+
+  const [donations, setDonations] = useState([2,5,0,0,0]);
 
   return (
     <div className="home-page">
@@ -39,7 +44,7 @@ function Home() {
       <Container className="second-container" fluid={true}>
         <Row>
           <Col lg="6" md="6" sm="12" className="p-4 abrigos-map">
-            <img src={mapboxSt} width="100%" height="100%" />
+            <img src={mapboxSt} alt="Mapa de Abrigos" width="100%" height="100%" />
             {/*<AbrigosMap />*/}
           </Col>
           <Col className="find-abrigos">
@@ -71,8 +76,8 @@ function Home() {
         <Row className="depoimentos-box">
           <Col className="depoimentos">
             <Row className="depoimento-content">
-              <p>“É realizador ajudar um animalzinho 
-                mesmo que ele não more comigo. Sinto-me mais feliz.”
+              <p>“É realizador ajudar um animalzinho
+              mesmo que ele não more comigo. Sinto-me mais feliz.”
               </p>
             </Row>
             <Row className="depoimento-title">
@@ -83,8 +88,8 @@ function Home() {
           </Col>
           <Col className="depoimentos">
             <Row className="depoimento-content">
-              <p>“Recebo o acompanhamento do meu afilhado 
-                peludo toda semana por e-mail.”
+              <p>“Recebo o acompanhamento do meu afilhado
+              peludo toda semana por e-mail.”
               </p>
             </Row>
             <Row className="depoimento-title">
@@ -94,6 +99,22 @@ function Home() {
             </Row>
           </Col>
         </Row>
+      </Container>
+      <Container className="third-container" fluid={true}>
+        <Container className="d-flex flex-column p-5" fluid={true}>
+          <Row lg="12" md="12" sm="12">
+            <Col>
+              <h2 style={{color: "#fff", marginBottom: "20px"}}>Total de doações até agora:</h2>
+              <Card className="content-wrapper">
+                <CardBody className="d-flex justify-content-center m-1">
+                  {donations.map(donate =>
+                    <h1 key={donate.index} className="each-number">{donate}</h1>
+                  )}
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     </div>
   );

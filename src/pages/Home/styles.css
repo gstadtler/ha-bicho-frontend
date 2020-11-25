@@ -78,3 +78,31 @@
 .depoimentos-box .depoimentos {
   padding: 50px 80px 0;
 }
+
+.home-page .third-container {
+  background: #669999;
+}
+
+.home-page .third-container .content-wrapper {
+  width: 100%;
+  border: none;
+}
+
+.home-page .third-container .content-wrapper .each-number {
+  background:#333366;
+  color: #ffffff;
+  border-radius: 8px;
+  margin: 0 20px;
+  padding: 10px 10px;
+  font-weight: 600;
+  font-size: 80px;
+}
+
+@media (max-width: 725px) 
+{
+  .home-page .third-container .content-wrapper .each-number {
+    margin: 0 5px;
+    padding: 2px;
+    font-size: 50px;
+  }
+}

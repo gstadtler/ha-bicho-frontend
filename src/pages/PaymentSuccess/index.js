@@ -2,8 +2,8 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-function PaymentSuccess() {
-  return <h1>Sucesso Papai</h1>;
+function PaymentSuccess(props) {
+  return <h1>Sucesso</h1>;
 }
 
 export default PaymentSuccess;

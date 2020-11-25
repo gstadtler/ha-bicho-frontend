@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import './styles.css';
 
-function SobreNos() {
+function SobreNos(props) {
 	return (
 		<>
 			<div id="sobre-nos">

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css';
 
-function Faq() {
+function Faq(props) {
 	return (
 		<>
 			<div id="Faq-page">

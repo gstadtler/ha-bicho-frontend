@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Table } from 'reactstrap';
 import './styles.css';
 
-function Transparencia() {
+function Transparencia(props) {
   return (
     <>
       <h1 className="transparencia-title">Tabela de Gastos</h1>

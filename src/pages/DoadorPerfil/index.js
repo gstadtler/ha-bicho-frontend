@@ -1,9 +1,13 @@
 import React from 'react';
 
-function DoadorPerfil() {
+function DoadorPerfil(props) {
+
+  const currUser = props.currentUser;
+
+  
   return (
     <div>
-      <h1>Eu sou um doador</h1>
+      <h1>Olá, {currUser.username}</h1>
     </div>
   )
 }

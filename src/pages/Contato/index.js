@@ -5,7 +5,7 @@ import ContatoForm from '../../components/ContatoForm';
 
 import './styles.css'
 
-function Contato() {
+function Contato(props) {
 
 	return (
 		<>

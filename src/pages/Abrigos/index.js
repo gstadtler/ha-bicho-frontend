@@ -12,7 +12,7 @@ import {
 import './styles.css';
 import api from '../../services/api';
 
-function Abrigos() {
+function Abrigos(props) {
 
 	const [abrigos, setAbrigos] = useState([]);
 

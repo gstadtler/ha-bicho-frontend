@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 
 import api from '../../services/api';
-import { login, setCurrentUser, setUserRole } from '../../services/auth';
+import { login } from '../../services/auth';
 
 import logotipoAzul from "../../imagens/logotipo-azul.svg"
 import "./styles.css";
@@ -55,7 +55,6 @@ function AbrigoForm(props) {
       const response = await api.post("/register", abrigoUser);
       if (response.status === 200) {
         alert("Sucesso ao cadastrar! Para fazer login você precisará do seu email e senha!");
-        setUserRole(response.data.role);
         login(response.data.token);
       } else {
         alert("Houve algum erro ao cadastrar.");
@@ -85,7 +84,6 @@ function AbrigoForm(props) {
       }
       const response = await api.post("/abrigos", novoAbrigo);
       if (response.status === 200) {
-        setCurrentUser(response.data);
         handleAbrigoUser(e);
       } else {
         alert("Houve algum erro ao cadastrar.")

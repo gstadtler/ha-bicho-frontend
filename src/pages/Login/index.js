@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
-import { login, setCurrentUser, setUserRole } from "../../services/auth";
+import { login } from "../../services/auth";
 import { FaFacebookF } from 'react-icons/fa';
 
 import {
@@ -29,14 +29,6 @@ function Login(props) {
     const userSession = { email, password };
     try {
       const response = await api.post("/login", userSession);
-      const userRole = response.data.role;
-      if(userRole === "doador"){
-        setCurrentUser(response.data);
-        setUserRole(response.data.role);
-      } else {
-        setAbrigoUser(response.data.email);
-        setUserRole(response.data.role);
-      }
       login(response.data.token);
       props.history.push("/");
     } catch (err) {
@@ -44,19 +36,8 @@ function Login(props) {
     }
   }
 
-  async function setAbrigoUser(email) {
-    const response = await api.get("/abrigos");
-    const abrigos = response.data;
-    const abrigoData = abrigos.filter(abrigo => (abrigo.email === email));
-    const abrigoUser = abrigoData[0];
-    setCurrentUser(abrigoUser);
-  }
-
-
   function responseFacebook(response) {
     if(response) {
-      setCurrentUser(response);
-      setUserRole("doador");
       login(response.accessToken);
       props.history.push("/");
     } else {
@@ -66,8 +47,6 @@ function Login(props) {
 
   function responseGoogle(response) {
     if(response) {
-			setCurrentUser(response.profileObj);
-			setUserRole("doador");
 			login(response.accessToken);
 			props.history.push("/");
 		} else {

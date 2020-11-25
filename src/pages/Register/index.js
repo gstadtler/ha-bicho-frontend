@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
-import { login, setCurrentUser, setUserRole } from '../../services/auth';
+import { login } from '../../services/auth';
 import { FaFacebookF } from 'react-icons/fa';
 
 import {
@@ -24,10 +24,10 @@ function Register(props) {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const role = 'doador';
 
 	async function handleSignUp(e) {
 		e.preventDefault();
-		const role = 'doador';
     try {
       const novoUsuario = {
 				username,
@@ -38,8 +38,6 @@ function Register(props) {
 			const response = await api.post("/register", novoUsuario);
       if (response.status === 200) {
 				alert("Agora você pode ajudar vários bichinhos de uma forma mais fácil e transparente!");
-				setCurrentUser(response.data);
-				setUserRole(response.data.role);
 				login(response.data.token);
 				props.history.push("/");
       } else {
@@ -53,8 +51,6 @@ function Register(props) {
 
 	function responseFacebook(response) {
 		if (response) {
-			setCurrentUser(response);
-			setUserRole("doador");
 			login(response.accessToken);
 			props.history.push("/");
 		} else {
@@ -64,8 +60,6 @@ function Register(props) {
 
 	function responseGoogle(response) {
 		if(response) {
-			setCurrentUser(response.profileObj);
-			setUserRole("doador");
 			login(response.accessToken);
 			props.history.push("/");
 		} else {

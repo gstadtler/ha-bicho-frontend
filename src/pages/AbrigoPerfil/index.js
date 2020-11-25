@@ -16,26 +16,29 @@ function AbrigoPerfil(props) {
 
 	const [abrigo, setAbrigo] = useState('');
 
-	const currentUser = props.currentUser;
-
+	const abrigoProfile = props.abrigo;
 
 	useEffect(() => {
+		let mounted = true;
 		async function loadAbrigo() {
-			try {
-				if (currentUser) {
-					const response = await api.get(`/abrigos/${currentUser.id}`)
-					setAbrigo(response.data);
-				} else {
-					const abrigoId = props.match.params.abrigoId;
-					const response = await api.get(`/abrigos/${abrigoId}`)
-					setAbrigo(response.data);
+			if (mounted) {
+				try {
+					if (abrigoProfile) {
+						setAbrigo(abrigoProfile);
+					} else {
+						const abrigoId = props.match.params.abrigoId;
+						const response = await api.get(`/abrigos/${abrigoId}`)
+						setAbrigo(response.data);
+					}
+				} catch (err) {
+					console.log(err);
 				}
-			} catch (err) {
-				console.log(err);
-			}
-		};
+			};
+		}
 		loadAbrigo();
+		return mounted = false;
 	}, []);
+
 
 	return (
 		<>
@@ -82,7 +85,7 @@ function AbrigoPerfil(props) {
 					<CardSubtitle tag="h6" className="mb-2">Veja como sua ajuda é de grande valor</CardSubtitle>
 					<CardText></CardText>
 					<Button color="success">
-						<Link to="/transparencia/abrigo-gastos" className="link-doacao">
+						<Link to={`/transparencia/${abrigo.nome}/gastos`} className="link-doacao">
 							Ver gastos
 						</Link>
 					</Button>

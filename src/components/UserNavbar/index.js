@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa'
 import './styles.css';
 
-import { removeCurrentUser, removeUserRole, logout } from '../../services/auth';
+import { logout } from '../../services/auth';
 
 import {
 	Collapse,
@@ -23,9 +23,8 @@ function UserNavbar(props) {
   }
 
   function handleLogout() {
-    removeCurrentUser();
-    removeUserRole();
     logout();
+    props.history.push("/");
   }
 
   return (

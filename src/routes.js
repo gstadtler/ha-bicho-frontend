@@ -24,7 +24,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 			{...rest}
 			render={props =>
 				isAuthenticated() ? (
-					<WithNavigation>
+					<WithNavigation {...props}>
 						<Component {...props} />
 					</WithNavigation>
 				) : (
@@ -39,28 +39,28 @@ function Routes() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route path="/" exact render={() =>
-					<WithNavigation>
+				<Route path="/" exact render={props =>
+					<WithNavigation {...props}>
 						<Home />
 					</WithNavigation>
 				}/>
-				<Route path="/sobre-nos" exact render={() => 
-					<WithNavigation>
+				<Route path="/sobre-nos" exact render={props => 
+					<WithNavigation {...props}>
 						<SobreNos />
 						</WithNavigation>
 				}/>
-				<Route path="/abrigos" exact render={() => 
-					<WithNavigation>
+				<Route path="/abrigos" exact render={props => 
+					<WithNavigation {...props}>
 						<Abrigos />
 					</WithNavigation>
 				}/>
-				<Route path="/contato" exact render={() => 
-					<WithNavigation>
+				<Route path="/contato" exact render={props => 
+					<WithNavigation {...props}>
 						<Contato />
 						</WithNavigation>
 				}/>
-				<Route path="/faq" exact render={() => 
-					<WithNavigation>
+				<Route path="/faq" exact render={props => 
+					<WithNavigation {...props}>
 						<Faq />
 					</WithNavigation>
 				}/>
@@ -75,12 +75,12 @@ function Routes() {
 					</WithNavigation>
 				}/>
 				<Route path="/perfil-abrigo/:abrigoId" exact render={props => 
-					<WithNavigation>
+					<WithNavigation {...props}>
 						<AbrigoPerfil {...props} />
 					</WithNavigation>
 				}/>
-				<Route path="/transparencia/abrigo-gastos" exact render={props => 
-					<WithNavigation>
+				<Route path="/transparencia/:abrigo/gastos" exact render={props => 
+					<WithNavigation {...props}>
 						<Transparencia {...props} />
 					</WithNavigation>
 				}/>

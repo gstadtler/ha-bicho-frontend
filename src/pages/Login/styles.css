@@ -1,16 +1,9 @@
-.Login header h1 {
+.login .login-title {
 	margin: 20px 0 10px 55px;
 	color: #669999;
 }
 
-.Login header img {
-	width: 100%;
-	margin: auto;
-}
-
-.Login form input {
-  width: 83%;
-  margin: auto;
+.login form input {
 	background:#E5E5E5;
 	border-radius: 4px;
 	font-weight: 500;
@@ -18,29 +11,23 @@
 	color: #444;
 }
 
-.Login footer {
-	width: 35vw;
-	margin: auto;
-	margin-top: 20px;
-}
-
-
-.Login .login-button {
+.login .login-button {
 	background: #669999;
-	width: 20vw;
+	border: none;
+	width: 100%;
+	margin-top: 25px;
 	display: flex;
 	justify-content: center;
-	margin: auto;
 	font-weight: 600;
 	font-size: 18px;
 	transition: background 0.5s;
 }
 
-.Login .login-button:hover {
+.login .login-button:hover {
 	background: #527272;
 }
 
-.social-login {
+.login .content-wrapper .social-login {
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
@@ -48,7 +35,7 @@
 	align-items: center;
 }
 
-.Login .facebook-button {
+.login .content-wrapper .facebook-button {
 	background:#1877f2;
 	color: #fff;
 	height: 8.5%;
@@ -61,22 +48,23 @@
 	transition: background 0.5s;
 }
 
-.Login .facebook-button:hover {
+.login .content-wrapper .facebook-button:hover {
 	background: #4f6e97;
 }
 
-.Login .google-button {
+.login .content-wrapper .google-button {
 	height: 8.5%;
 }
 
-.Login .register-group {
-  margin-top: 40px;
+.login .content-wrapper .register-group {
+	margin-top: 40px;
+	margin-bottom: 0;
 	display: flex;
 	justify-content: center;
 	align-items: baseline;
 }
 
-.Login .link-register {
+.login .content-wrapper .link-register {
 	margin-left: 5px;
 	text-decoration: none;
 	font-weight: 600;

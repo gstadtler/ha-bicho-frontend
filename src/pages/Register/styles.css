@@ -1,48 +1,46 @@
-.Register header h1 {
+.register .register-title {
 	margin: 20px 0 10px 55px;
 	color: #669999;
 }
 
-.Register header img {
-	width: 100%;
-	margin: auto;
-}
-
-.Register form input {
+.register form input {
 	background:#E5E5E5;
 	border-radius: 4px;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 18px;
 	color: #444;
 }
 
-.Register footer {
-	width: 35vw;
-	margin: auto;
-	margin-top: 20px;
-}
-
-.Register .termos-group{
+.register .termos-group {
+	color: #333366;
 	display: flex;
+	width: 60%;
+	margin: auto;
 	text-align: center;
+	font-weight: 600;
 }
 
-.Register .register-button {
+.register .termos-group .link-termos {
+	text-decoration: none;
+}
+
+.register .register-button {
 	background: #669999;
-	width: 20vw;
+	border: none;
+	width: 100%;
+	margin-top: 25px;
 	display: flex;
 	justify-content: center;
-	margin: auto;
 	font-weight: 600;
 	font-size: 18px;
 	transition: background 0.5s;
 }
 
-.Register .register-button:hover {
+.register .register-button:hover {
 	background: #527272;
 }
 
-.social-login {
+.register .social-login {
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
@@ -50,7 +48,7 @@
 	align-items: center;
 }
 
-.Register .facebook-button {
+.register .facebook-button {
 	background:#1877f2;
 	color: #fff;
 	height: 8.5%;
@@ -63,21 +61,23 @@
 	transition: background 0.5s;
 }
 
-.Register .facebook-button:hover {
+.register .facebook-button:hover {
 	background: #4f6e97;
 }
 
-.Register .google-button {
+.register .google-button {
 	height: 8.5%;
 }
 
-.Register .login-group {
+.register .login-group {
 	display: flex;
+	margin-top: 30px;
+	margin-bottom: 0;
 	justify-content: center;
 	align-items: baseline;
 }
 
-.Register .link-login {
+.register .link-login {
 	margin-left: 5px;
 	text-decoration: none;
 	font-weight: 600;

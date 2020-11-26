@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import WithNavigation from './components/WithNavigation';
+import HomeNavigation from './components/HomeNavigation';
 import { isAuthenticated } from './services/auth';
 
 import Home from './pages/Home';
@@ -16,6 +17,8 @@ import Doacoes from './pages/Doacoes';
 import Payments from './pages/Payments';
 import Transparencia from './pages/Transparencia';
 import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentPending from './pages/PaymentPending';
+import PaymentFailure from './pages/PaymentFailure';
 
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -40,9 +43,9 @@ function Routes() {
 		<BrowserRouter>
 			<Switch>
 				<Route path="/" exact render={props =>
-					<WithNavigation {...props}>
+					<HomeNavigation {...props}>
 						<Home />
-					</WithNavigation>
+					</HomeNavigation>
 				}/>
 				<Route path="/sobre-nos" exact render={props => 
 					<WithNavigation {...props}>
@@ -88,7 +91,9 @@ function Routes() {
 				<PrivateRoute path="/doacoes/:abrigoId/:abrigoNome" exact component={Doacoes} />
 				<PrivateRoute path="/payments/:abrigoId/:abrigoNome" exact component={Payments} />
 				<PrivateRoute path="/meu-perfil" exact component={UserPerfil} />
-				<PrivateRoute path="/payments/success" exact component={PaymentSuccess}/>
+				<PrivateRoute path="/payments/success" component={PaymentSuccess}/>
+				<PrivateRoute path="/payments/pending" component={PaymentPending}/>
+				<PrivateRoute path="/payments/failure" component={PaymentFailure}/>
 				<Route path="*" component={() => <h1>Page not found</h1>} />
 			</Switch>
 		</BrowserRouter>

@@ -46,29 +46,25 @@ function AbrigoPerfil(props) {
 				<Card>
 					<CardImg top width="100%" src={pets3} alt="Card image cap" />
 					<CardBody>
-						<CardTitle tag="h4">{abrigo.nome}</CardTitle>
+						<CardTitle tag="h3" style={{color: "#333366"}}>{abrigo.nome}</CardTitle>
 						<CardSubtitle tag="h6" className="mb-2 text-muted">Abrigo</CardSubtitle>
 						<CardText>{abrigo.descricao}</CardText>
 					</CardBody>
 				</Card>
 				<Card>
 					<CardBody>
-						<CardTitle tag="h5">Necessitamos</CardTitle>
-						<CardSubtitle tag="h6" className="mb-2 text-muted">Sabia que dá pra você doar materiais?</CardSubtitle>
-						<CardText>Escolha itens da lista abaixo e  contribua!</CardText>
-						<CardText>
-							<li>Ração</li>
-							<li>Areia para gatos</li>
-							<li>Brinquedos</li>
-						</CardText>
-						<Button color="info">
+						<CardTitle tag="h5" style={{color: "#333366"}}>Lista de Necessidades</CardTitle>
+						<CardSubtitle 
+							tag="h6" 
+							className="mb-2 text-muted"
+						>
+							Em breve você também poderá doar materiais!
+						</CardSubtitle>
+						{/*<Button color="info" style={{display: "contents"}} className="text-muted">
 							<Link
 								to={`/doacoes/${abrigo.id}/${abrigo.nome}`}
-								className="link-doacao"
-							>
-								Contribuir
-							</Link>
-						</Button>
+								className="link-doacao">Em breve</Link>
+						</Button>*/}
 					</CardBody>
 				</Card>
 				<Card>
@@ -76,30 +72,32 @@ function AbrigoPerfil(props) {
 						<SlideShow />
 					</CardBody>
 					<CardBody>
-						<CardTitle tag="h5">Ha-bichinhos do abrigo</CardTitle>
+						<CardTitle tag="h4" style={{color: "#333366"}}>Ha-bichinhos do abrigo</CardTitle>
 						<CardText>Acompanhe a situação dos nossos hóspedes animais</CardText>
 					</CardBody>
 				</Card>
-				<Card body inverse color="info">
-					<CardTitle tag="h4">Prestação de contas</CardTitle>
-					<CardSubtitle tag="h6" className="mb-2">Veja como sua ajuda é de grande valor</CardSubtitle>
-					<CardText></CardText>
-					<Button color="success">
-						<Link to={`/transparencia/${abrigo.nome}/gastos`} className="link-doacao">
-							Ver gastos
-						</Link>
-					</Button>
-				</Card>
-				<Card body inverse style={{ backgroundColor: '#669999' }}>
-					<CardTitle tag="h5">Doações</CardTitle>
+
+				<Card body inverse color="info" className="d-flex">
+					<CardTitle tag="h3">Doações</CardTitle>
 					<CardText>Doações recebidas até agora: R$ 0,00</CardText>
 					<CardText>Nos ajude a manter nossos amiguinhos felizes e saudáveis!</CardText>
-					<Button style={{ backgroundColor: '#333366' }}>
+					<Button color="success">
 						<Link
 							to={`/doacoes/${abrigo.id}/${abrigo.nome}`}
 							className="link-doacao"
 						>
 							Doar
+						</Link>
+					</Button>
+				</Card>
+				
+				<Card body inverse style={{ backgroundColor: '#669999' }}>
+					<CardTitle tag="h4">Prestação de contas</CardTitle>
+					<CardSubtitle tag="h6" className="mb-2">Veja como sua ajuda é de grande valor</CardSubtitle>
+					<CardText></CardText>
+					<Button style={{ backgroundColor: '#333366' }}>
+						<Link to={`/transparencia/${abrigo.nome}/gastos`} className="link-doacao">
+							Ver gastos
 						</Link>
 					</Button>
 				</Card>

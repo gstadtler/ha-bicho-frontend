@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -22,26 +23,31 @@ function Faq(props) {
 					<div>
 						<h3>Como faço para doar?</h3>
 						<p>
-							Vá à aba de cadastro em nosso site e o preencha com suas informações 
+							Você precisa estar cadastrado no nosso site! Clicando <Link to="/register"> aqui </Link>
+							 você vai para a página de cadastro, preenche com suas informações 
 							de forma prática e rápida. Logo após, você poderá escolher 
-							o local para o qual deseja realizar a sua doação. 
-							Após escolhido, basta seguir as etapas para concluir o pagamento.
+							o abrigo para o qual deseja realizar a sua doação.
+							<Link to="/abrigos"> Nesta página</Link> você encontra uma lista de abrigos. 
+							Clicando em "conhecer" algum deles, você é redirecionado para o perfil deste abrigo,
+							onde você pode econtrar mais informações sobre o mesmo. Após
+							escolher, basta seguir as etapas para concluir o pagamento.
 						</p>
 					</div>
 					<div>
 						<h3>Quais são os benefícios que posso receber?</h3>
 						<p>
-							Os nossos parceiros oferecem cupons de descontos para determinados produtos
-							em sua loja ou departamento. Além disso, você pode optar por receber 
-							apenas informações, vídeos, fotos do local para o qual doou. 
+							Você pode optar por receber informações, vídeos, 
+							fotos do local para o qual doou. 
 						</p>
 					</div>
 					<div>
 						<h3>Onde vejo as informações dos abrigos disponíveis?</h3>
 						<p>
-							Você pode encontrá-las no mapa interativo em nossa página inicial 
-							ou no menu de perfis. Lá, estão disponíveis a história do local, 
-							os dados para contato, planilhas da receita e dos custos, 
+							Você pode encontrá-las selecionando algum abrigo 
+							no mapa interativo em nossa <Link to="/">página inicial </Link> 
+							ou na <Link to="/abrigos">lista de abrigos</Link>. 
+							Lá, estão disponíveis a história do local, 
+							dados para contato, planilhas de gastos (mostrando para onde vai sua doação), 
 							as formas de contribuir e registros do cotidiano do abrigo. 
 						</p>
 					</div>

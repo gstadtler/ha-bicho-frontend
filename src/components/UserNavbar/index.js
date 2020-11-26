@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa'
 import './styles.css';
 
 import { logout } from '../../services/auth';
 
 import {
-	Collapse,
-	Navbar,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	Button
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav,
+  NavItem,
+  Button
 } from 'reactstrap';
 
 function UserNavbar(props) {
@@ -30,39 +29,70 @@ function UserNavbar(props) {
   return (
     <>
       <Navbar light expand="md" className="user-navbar">
-        <NavbarBrand>
-          <Link to="/">
-            <FaHome />
-          </Link>
-        </NavbarBrand>
+
+        <Link to="/" className="navbar-brand">
+          <FaHome style={{ color: "#333366" }} />
+        </Link>
+
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
 
-          <Nav className="mr-auto" navbar>
+          <Nav navbar>
 
-            <NavItem className="mr-3 ml-3">
-              <Link to="/sobre-nos" className="link-navbar">Sobre nós</Link>
+            <NavItem className="mx-2">
+              <NavLink
+                to="/sobre-nos"
+                activeStyle={{ background: "#669999", color: "#fff" }}
+                className="link-navbar"
+              >
+                Sobre nós
+							</NavLink>
             </NavItem>
 
-            <NavItem className="mr-3 ml-3">
-              <Link to="/abrigos" className="link-navbar">Lista de Abrigos</Link>
+            <NavItem className="mx-2">
+              <NavLink
+                to="/abrigos"
+                activeStyle={{ background: "#669999", color: "#fff" }}
+                className="link-navbar"
+              >
+                Lista de Abrigos
+							</NavLink>
             </NavItem>
 
-            <NavItem className="mr-3 ml-3">
-              <Link to="/contato" className="link-navbar">Contato</Link>
+            <NavItem className="mx-2">
+              <NavLink
+                to="/contato"
+                activeStyle={{ background: "#669999", color: "#fff" }}
+                className="link-navbar"
+              >
+                Contato
+							</NavLink>
             </NavItem>
           </Nav>
 
           <Nav className="ml-auto" navbar>
-            <NavItem className="mr-2 ml-2">
-              <Link to="/faq" className="link-navbar">FAQ</Link>
+
+            <NavItem className="mx-2">
+              <NavLink
+                to="/faq"
+                activeStyle={{ background: "#669999", color: "#fff" }}
+                className="link-navbar"
+              >
+                FAQ
+							</NavLink>
             </NavItem>
 
-            <NavItem className="mr-2 ml-2">
-              <Link to="/meu-perfil" className="link-navbar">Meu Perfil</Link>
+            <NavItem className="mx-2">
+              <NavLink
+                to="/meu-perfil"
+                activeStyle={{ background: "#669999", color: "#fff" }}
+                className="link-navbar"
+              >
+                Meu Perfil
+							</NavLink>
             </NavItem>
 
-            <NavItem className="mr-2 ml-2">
+            <NavItem className="ml-2">
               <Button onClick={handleLogout} className="logout-btn">Log out</Button>
             </NavItem>
 

@@ -22,7 +22,7 @@ function ModalComponent() {
 	}
 
 	return (
-		<Container className="modal-form">
+		<Container className="modal-form p-0" fluid={true}>
 			<Button className="bt-open-modal" onClick={handleOpenModal}>
 				Cadastre seu Abrigo
 			</Button>

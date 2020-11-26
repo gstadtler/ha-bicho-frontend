@@ -21,23 +21,23 @@ function Home(props) {
     <div className="home-page">
       <Container className="mt-5 first-container" fluid={true}>
         <Row>
-          <img src={pets} alt="Ha-bicho" style={{ height: 'max-content', width: '100%' }} />
+          <img src={pets} alt="Ha-bicho" style={{ width: '100%' }} />
         </Row>
         <Row>
           <Col className="d-flex justify-content-center" sm="12" md={{ size: 6, offset: 3 }}>
-            <img src={logo} alt="Ha-bicho" width="500" height="125" />
+            <img src={logo} alt="Ha-bicho" className="home-logo" />
           </Col>
         </Row>
 
         <Row>
-          <Col className="d-flex justify-content-center slogan" md="12">
+          <Col className="d-flex justify-content-center mt-3 slogan" md="12">
             <h1>Mediamos doações com empatia, transparência e praticidade.</h1>
           </Col>
         </Row>
         <Row>
-          <Button className="home-btns saiba-mais-btn">
-            <Link to="/sobre-nos" className="btn-links">Saiba mais</Link>
-          </Button>
+          <Col className="d-flex justify-content-center">
+            <Link to="/sobre-nos" className="saiba-mais-link btn-links">Saiba mais</Link>
+          </Col>
         </Row>
       </Container>
 

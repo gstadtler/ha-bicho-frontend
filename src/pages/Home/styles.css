@@ -15,15 +15,35 @@
   color: #fff;
 }
 
+.home-page .first-container .home-logo {
+  width: 500px;
+  height: 100%;
+  margin-top: 20px;
+}
+
+@media (max-width:600px) 
+{
+  .home-page .first-container .home-logo {
+    width: 400px;
+    height: 100%;
+  }
+}
+
 .first-container .slogan {
   text-align: center;
 }
 
-.first-container .saiba-mais-btn {
-  width: 20%;
-  margin: auto;
+.home-page .first-container .saiba-mais-link {
+  background: #669999;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 18px;
   margin-top: 20px;
-  padding: 15px;
+  padding: 15px 70px;
+}
+
+.home-page .first-container .saiba-mais-link:hover {
+	background: #527272;
 }
 
 .second-container {
@@ -44,7 +64,7 @@
 
 .find-abrigos main p {
   margin: 25px 0;
-  color: #f3f3f3;
+  color: #fff;
   font-weight: 600;
   font-size: 18px;
 }

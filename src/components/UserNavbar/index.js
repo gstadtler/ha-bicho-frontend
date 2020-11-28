@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import api from '../../services/api';
 import { FaHome } from 'react-icons/fa'
 import './styles.css';
 
@@ -16,10 +17,24 @@ import {
 
 function UserNavbar(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState('');
 
   function toggle() {
     setIsOpen(!isOpen);
   }
+
+  useEffect(()=> {
+    async function getCurrentUserEmail() {
+      try {
+        const response = await api.get("/show")
+        const { email } = response.data;
+        setEmail(email);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getCurrentUserEmail()
+  },[])
 
   function handleLogout() {
     logout();
@@ -84,7 +99,7 @@ function UserNavbar(props) {
 
             <NavItem className="mx-2">
               <NavLink
-                to="/meu-perfil"
+                to={`/meu-perfil/${email}`}
                 activeStyle={{ background: "#669999", color: "#fff" }}
                 className="link-navbar"
               >

@@ -90,7 +90,7 @@ function Routes() {
 				
 				<PrivateRoute path="/doacoes/:abrigoId/:abrigoNome" exact component={Doacoes} />
 				<PrivateRoute path="/payments/:abrigoId/:abrigoNome" exact component={Payments} />
-				<PrivateRoute path="/meu-perfil" exact component={UserPerfil} />
+				<PrivateRoute path="/meu-perfil/:email" exact component={UserPerfil} />
 				<PrivateRoute path="/payments/success" component={PaymentSuccess}/>
 				<PrivateRoute path="/payments/pending" component={PaymentPending}/>
 				<PrivateRoute path="/payments/failure" component={PaymentFailure}/>

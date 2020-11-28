@@ -1,0 +1,36 @@
+.edit-abrigo img {
+	width: 100%;
+	margin: auto;
+	margin-bottom: 25px;
+}
+
+.edit-abrigo {
+	padding: 20px;
+}
+
+.edit-abrigo .address-field{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.edit-abrigo label {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.edit-abrigo button {
+	display: block;
+	background: #333366;
+	color: #ebebeb;
+	border: 0;
+	border-radius: 4px;
+	width: 100%;
+	padding: 16px;
+	font-weight: bold;
+	font-size: 15px;
+	transition: background-color 0.2s;
+}
+
+.edit-abrigo button:hover {
+	background-color: #5d5d99;
+}

@@ -5,12 +5,10 @@ import {
 	Button,
 } from 'reactstrap';
 
-import AbrigoForm from '../AbrigoForm';
-
 import { FiX } from "react-icons/fi";
 import './styles.css';
 
-function ModalComponent() {
+function ModalComponent(props) {
 	const [showModal, setShowModal] = useState(false);
 
 	function handleOpenModal() {
@@ -21,10 +19,20 @@ function ModalComponent() {
 		setShowModal(!showModal);
 	}
 
+	function renderChildren(){
+		const child = props.children;
+		const cloned = React.cloneElement(child, { setModal: handleCloseModal });
+		return cloned;
+	};
+
 	return (
 		<Container className="modal-form p-0" fluid={true}>
-			<Button className="bt-open-modal" onClick={handleOpenModal}>
-				Cadastre seu Abrigo
+			<Button 
+				style={{background: `${props.btnColor}`}} 
+				className="bt-open-modal" 
+				onClick={handleOpenModal}
+			>
+				{props.btnOpenModalName}
 			</Button>
 			<Modal 
 				isOpen={showModal} 
@@ -35,7 +43,9 @@ function ModalComponent() {
 				<Button className="bt-close-modal" onClick={handleCloseModal}>
 					<FiX />
 				</Button>
-				<AbrigoForm setModal={handleCloseModal} />
+				<div>
+					{renderChildren()}
+				</div>
 			</Modal>
 		</Container>
 	);

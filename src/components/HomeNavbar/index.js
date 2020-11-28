@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa'
 import ModalComponent from '../ModalComponent';
+import AbrigoForm from '../AbrigoForm';
 import './styles.css';
 
 import {
@@ -89,7 +90,9 @@ function HomeNavbar() {
 						</NavItem>
 
 						<NavItem className="mx-2">
-							<ModalComponent />
+							<ModalComponent btnOpenModalName="Cadastre seu abrigo" btnColor="#669999">
+								<AbrigoForm />
+							</ModalComponent>
 						</NavItem>
 
 						<NavItem className="ml-2">

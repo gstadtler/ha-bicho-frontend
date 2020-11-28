@@ -7,26 +7,17 @@ import DoadorPerfil from '../DoadorPerfil';
 function UserPerfil(props) {
 
   const [user, setUser] = useState('');
-  const [abrigo, setAbrigo] = useState('');
+  const email = props.match.params.email;
   
   useEffect(() => {
     async function getCurrentUser() {
       try {
         const currUser = await api.get("/show");
         setUser(currUser.data);
-        const { role, email } = currUser.data;
-        console.log(role, email);
-        if (role === "abrigo") {
-          console.log("got here!")
-          const response = await api.get(`/find/${email}`);
-          console.log('got the shelter', response);
-          setAbrigo(response.data);
-        }
       } catch (err) {
         console.log(err);
       }
     };
-    console.log('set the shelter', abrigo);
     getCurrentUser();
   }, []);
 
@@ -41,7 +32,7 @@ function UserPerfil(props) {
   return (
     <div>
       {isAbrigo() ? (
-        <AbrigoPerfil abrigo={abrigo} />
+        <AbrigoPerfil email={email} />
       ) : (
           <DoadorPerfil currentUser={user} />
         )}

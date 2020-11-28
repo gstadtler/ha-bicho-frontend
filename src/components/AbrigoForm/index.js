@@ -30,13 +30,17 @@ function AbrigoForm(props) {
   const [bairro, setBairro] = useState('');
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
   const abrigoRole = 'abrigo';
 
 
   function handleLocationAccess() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position);
+        const { latitude, longitude } = position.coords;
+        setLatitude(latitude);
+        setLongitude(longitude);
       }, function(error){
         console.log(error);
       })
@@ -80,7 +84,9 @@ function AbrigoForm(props) {
         cep,
         bairro,
         cidade,
-        uf
+        uf,
+        latitude,
+        longitude
       }
       const response = await api.post("/abrigos", novoAbrigo);
       if (response.status === 200) {

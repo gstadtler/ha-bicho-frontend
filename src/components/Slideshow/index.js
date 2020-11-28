@@ -8,32 +8,33 @@ import {
 } from 'reactstrap';
 
 import './styles.css';
-
 import pets02 from '../../imagens/pets02.jpg';
 import pets01 from '../../imagens/pets01.jpg';
 import pets0 from '../../imagens/pets0.jpg';
- 
-const items = [
-  {
-    src: pets0,
-    altText: 'Slide 1',
-    caption: ''
-  },
-  {
-    src: pets01,
-    altText: 'Slide 2',
-    caption: ''
-  },
-  {
-    src: pets02,
-    altText: 'Slide 3',
-    caption: ''
-  }
-];
 
 const SlideShow = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+  //console.log('no slide', props.pictures);
+
+  const items = [
+    {
+      src: pets0,
+      altText: 'Ha-bichinhos',
+      caption: ''
+    },
+    {
+      src: pets01,
+      altText: 'Ha-bichinhos',
+      caption: ''
+    },
+    {
+      src: pets02,
+      altText: 'Ha-bichinhos',
+      caption: ''
+    }
+  ];
+
 
   const next = () => {
     if (animating) return;
@@ -50,6 +51,18 @@ const SlideShow = (props) => {
   const goToIndex = (newIndex) => {
     if (animating) return;
     setActiveIndex(newIndex);
+  }
+
+  const setItems = () => {
+    const items =
+      props.pictures.map(picture => [
+        {
+          key: picture.id,
+          src: picture.url,
+          altText: picture.path,
+          caption: ''
+        }
+      ])
   }
 
   const slides = items.map((item) => {

@@ -4,6 +4,7 @@ import {
   Container, Row, Col, Button,
   Card, CardBody
 } from 'reactstrap';
+import { FaHeart, FaInstagram } from 'react-icons/fa';
 
 //import AbrigosMap from '../../components/AbrigosMap';
 import mapboxSt from '../../imagens/mapbox-st.jpg';
@@ -115,6 +116,22 @@ function Home(props) {
             </Col>
           </Row>
         </Container>
+      </Container>
+      <Container className="fourth-container" fluid={true}>
+        <Row className="rodape-habicho">
+          <Col className="d-flex justify-content-end content">
+            <div className="d-flex">
+              <h6 style={{marginRight: "10px", padding: "3px"}}>Encontre-nos em:</h6>
+              <a href="https://www.instagram.com/ha.bicho/">
+                <FaInstagram size="30" style={{fontWeight: "bold", color: "#333366"}} />
+              </a>
+            </div>
+
+            <p style={{color: "#669999", padding: "2px"}}>
+              Feito com <FaHeart style={{color: "#333366"}} /> pela Ha-bicho
+            </p>
+          </Col>
+        </Row>
       </Container>
     </div>
   );

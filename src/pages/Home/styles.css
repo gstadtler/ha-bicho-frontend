@@ -126,3 +126,13 @@
     font-size: 50px;
   }
 }
+
+.home-page .fourth-container .rodape-habicho {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+
+.home-page .fourth-container .rodape-habicho .content {
+  gap: 30px;
+}

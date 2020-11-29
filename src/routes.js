@@ -19,6 +19,7 @@ import Transparencia from './pages/Transparencia';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentPending from './pages/PaymentPending';
 import PaymentFailure from './pages/PaymentFailure';
+import Teste from './components/FormTest';
 
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -87,6 +88,12 @@ function Routes() {
 						<Transparencia {...props} />
 					</WithNavigation>
 				}/>
+				<Route path="/teste" exact render={props => 
+					<WithNavigation {...props}>
+						<Teste {...props} />
+					</WithNavigation>
+				}/>
+
 				
 				<PrivateRoute path="/doacoes/:abrigoId/:abrigoNome" exact component={Doacoes} />
 				<PrivateRoute path="/payments/:abrigoId/:abrigoNome" exact component={Payments} />

@@ -15,7 +15,7 @@ function Contato(props) {
 					<Row className="w-100">
 						<Col xs="8">
 							<p>Quer fazer doação de materiais ou ser voluntário num abrigo? Ainda tem questões
-							a partilhar conosco? Manda uma mensagem para nós, que responderemos em até três dias.
+								a partilhar conosco? Manda uma mensagem para nós!"
 							</p>
 						</Col>
 					</Row>

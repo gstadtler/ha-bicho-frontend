@@ -1,63 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { Form } from '@unform/web';
+import Input from '../Input';
 import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  Row,
-  Col
+  FormGroup, Label, Button,
+  Row, Col
 } from 'reactstrap';
-
+import * as Yup from 'yup';
 import api from '../../services/api';
 import { login } from '../../services/auth';
-
 import logotipoAzul from "../../imagens/logotipo-azul.svg"
 import "./styles.css";
 
-function AbrigoForm(props) {
 
-  const [cnpj_cpf, setCnpj_cpf] = useState('');
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [descricao, setDescricao] = useState('');
-  const [qtd_animais, setQtd_animais] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [rua, setRua] = useState('');
-  const [numero, setNumero] = useState('');
-  const [cep, setCep] = useState('');
-  const [bairro, setBairro] = useState('');
-  const [cidade, setCidade] = useState('');
-  const [uf, setUf] = useState('');
+function AbrigoForm(props) {
+  const formRef = useRef(null);
+
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  const abrigoRole = 'abrigo';
-
+  const role = 'abrigo';
 
   function handleLocationAccess() {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+      navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude, longitude } = position.coords;
         setLatitude(latitude);
         setLongitude(longitude);
-      }, function(error){
+      }, function (error) {
         console.log(error);
       })
     }
-  }
+  };
 
-  async function handleAbrigoUser(e) {
-    e.preventDefault();
+  async function handleAbrigoUser(user) {
     try {
-      const abrigoUser = {
-        username: nome,
-        email: email,
-        password: senha,
-        role: abrigoRole
-      }
-      const response = await api.post("/register", abrigoUser);
-      if (response.status === 200) {
+      const response = await api.post("/register", user);
+      if (response.data.token) {
         alert("Sucesso ao cadastrar! Para fazer login você precisará do seu email e senha!");
         login(response.data.token);
       } else {
@@ -69,38 +46,81 @@ function AbrigoForm(props) {
     props.setModal();
   };
 
-  async function handleCreateAbrigo(e) {
-    e.preventDefault();
+  async function handleSubmit(data) {
     try {
+      // Remove all previous errors
+      formRef.current.setErrors({});
+
+      const schema = Yup.object().shape({
+        cnpj_cpf: Yup
+          .string()
+          .test('len', 'CPF deve ter 11 caracteres, CNPJ deve ter 14 caracteres',
+            (val) => {
+              if (val) {
+                if(val.length > 11){
+                  return val.length === 14;
+                } else {
+                  return val.length === 11;
+                }
+              }
+            }
+          ),
+        nome: Yup.string().min(3,'Nome deve ter no mínimo 3 caracteres').max(80,'Nome deve ter no máximo 80 caracteres'),
+        email: Yup.string().email('Insira um e-mail válido!'),
+        password: Yup.string().min(6,'Sua senha deve ter no mínimo 6 caracteres').max(30,'Sua senha deve ter no máximo 30 caracteres'),
+        descricao: Yup.string().min(25,'Descrição deve ter no mínimo 25 caracteres').max(500,'Descrição deve ter no máximo 500 caracteres'),
+        qtd_animais: Yup.number()
+          .test('len', 'Você precisa abrigar no mínimo 5 animais para fazer parte da Ha-bicho!', (val) => {
+            if (val) { return val >= 5; }
+          }).integer().positive(),
+        telefone: Yup.string().min(11,'Telefone deve ter no mínimo 11 caracteres').max(15,'Telefone deve ter no máximo 15 caracteres'),
+        rua: Yup.string(),
+        numero: Yup.number().integer().positive(),
+        cep: Yup.string().min(8,'CEP deve ter no mínimo 8 caracteres').max(10,'CEP deve ter no máximo 10 caracteres'),
+        bairro: Yup.string(),
+        cidade: Yup.string(),
+        uf: Yup.string().min(2,'UF deve ter 2 caracteres').max(2,'UF deve ter 2 caracteres')
+      })
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+      // Validation passed
+      const {
+        cnpj_cpf, nome, email, password,
+        descricao, qtd_animais, telefone,
+        rua, numero, cep, bairro, cidade, uf } = data;
+
+      const user = { username: nome, email, password, role };
+
       const novoAbrigo = {
-        cnpj_cpf,
-        nome,
-        email,
-        descricao,
-        qtd_animais,
-        telefone,
-        rua,
-        numero,
-        cep,
-        bairro,
-        cidade,
-        uf,
-        latitude,
-        longitude
+        cnpj_cpf, nome, email,
+        descricao, qtd_animais,
+        telefone, rua, numero,
+        cep, bairro, cidade,
+        uf, latitude, longitude
       }
       const response = await api.post("/abrigos", novoAbrigo);
-      if (response.status === 200) {
-        handleAbrigoUser(e);
+      if (response.data) {
+        handleAbrigoUser(user);
       } else {
-        alert("Houve algum erro ao cadastrar.")
+        alert('Houve algum erro ao cadastrar seu abrigo.');
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const validationErrors = {};
+
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+
+        formRef.current.setErrors(validationErrors);
+      }
     }
   }
 
   return (
-    <Form onSubmit={handleCreateAbrigo} className="abrigo-form">
+    <Form ref={formRef} onSubmit={handleSubmit} className="abrigo-form">
       <img
         src={logotipoAzul}
         alt="Ha-bicho"
@@ -111,22 +131,18 @@ function AbrigoForm(props) {
       <Row>
         <Col>
           <FormGroup>
-            <Label>CNPJ ou CPF do responsável</Label>
             <Input
               name="cnpj_cpf"
-              value={cnpj_cpf}
-              onChange={e => setCnpj_cpf(e.target.value)}
+              label="CNPJ ou CPF do responsável"
               required
             />
           </FormGroup>
         </Col>
         <Col>
           <FormGroup>
-            <Label>Telefone</Label>
             <Input
               name="telefone"
-              value={telefone}
-              onChange={e => setTelefone(e.target.value)}
+              label="Telefone"
               required
             />
           </FormGroup>
@@ -136,22 +152,18 @@ function AbrigoForm(props) {
       <Row>
         <Col>
           <FormGroup>
-            <Label>Nome do Abrigo</Label>
             <Input
               name="nome"
-              value={nome}
-              onChange={e => setNome(e.target.value)}
+              label="Nome do Abrigo"
               required
             />
           </FormGroup>
         </Col>
         <Col>
           <FormGroup>
-            <Label>Email</Label>
             <Input
               name="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              label="Email"
               type="email"
               required
             />
@@ -159,11 +171,9 @@ function AbrigoForm(props) {
         </Col>
         <Col>
           <FormGroup>
-            <Label>Senha para Login</Label>
             <Input
-              name="senha"
-              value={senha}
-              onChange={e => setSenha(e.target.value)}
+              name="password"
+              label="Senha para Login"
               type="password"
               required
             />
@@ -174,22 +184,18 @@ function AbrigoForm(props) {
       <Row>
         <Col>
           <FormGroup>
-            <Label>Número de animais</Label>
             <Input
               name="qtd_animais"
-              value={qtd_animais}
-              onChange={e => setQtd_animais(e.target.value)}
+              label="Número de animais"
               required
             />
           </FormGroup>
         </Col>
         <Col>
           <FormGroup>
-            <Label>Descrição</Label>
             <Input
               name="descricao"
-              value={descricao}
-              onChange={e => setDescricao(e.target.value)}
+              label="Descrição"
               type="textarea"
               required
             />
@@ -204,25 +210,26 @@ function AbrigoForm(props) {
             Para podermos exibir seu abrigo no nosso mapa de abrigos,
             precisamos que você permita nosso acesso à sua localização.
           <br />
-          <span style={{
-            fontStyle: "italic",
-            fontWeight: "bold",
-            color: "#333366"}}
-          >
-            Não se preocupe, a localização não será usada
-            para nada além de mostrar o seu abrigo no mapa.
+            <span style={{
+              fontStyle: "italic",
+              fontWeight: "bold",
+              color: "#333366"
+            }}
+            >
+              Não se preocupe, a localização não será usada
+              para nada além de mostrar o seu abrigo no mapa.
           </span>
           </p>
         </Col>
         <Col>
+          <h6 style={{ fontWeight: "bold" }}>
+            Benefício de permitir o acesso
+          </h6>
           <p>
-            <h6 style={{ fontWeight: "bold" }}>
-              Benefício de permitir o acesso
-            </h6>
-            <span style={{fontWeight: "600"}}>
+            <span style={{ fontWeight: "600" }}>
               Os possíveis doadores que acessarem nosso site
               irão poder ver e acessar seu abrigo facilmente e mais rápido, aumentando
-              as chances de doação! 
+              as chances de doação!
             </span>
             <Button className="btn-permitir" onClick={handleLocationAccess}>Permitir</Button>
           </p>
@@ -236,11 +243,9 @@ function AbrigoForm(props) {
 
           <Col>
             <FormGroup>
-              <Label>Rua</Label>
               <Input
                 name="rua"
-                value={rua}
-                onChange={e => setRua(e.target.value)}
+                label="Rua"
                 required
               />
             </FormGroup>
@@ -248,11 +253,9 @@ function AbrigoForm(props) {
 
           <Col>
             <FormGroup>
-              <Label>Número</Label>
               <Input
                 name="numero"
-                value={numero}
-                onChange={e => setNumero(e.target.value)}
+                label="Número"
                 required
               />
             </FormGroup>
@@ -260,11 +263,9 @@ function AbrigoForm(props) {
 
           <Col>
             <FormGroup>
-              <Label>CEP</Label>
               <Input
                 name="cep"
-                value={cep}
-                onChange={e => setCep(e.target.value)}
+                label="CEP"
                 required
               />
             </FormGroup>
@@ -276,11 +277,9 @@ function AbrigoForm(props) {
 
           <Col>
             <FormGroup>
-              <Label>Bairro</Label>
               <Input
                 name="bairro"
-                value={bairro}
-                onChange={e => setBairro(e.target.value)}
+                label="Bairro"
                 required
               />
             </FormGroup>
@@ -288,11 +287,9 @@ function AbrigoForm(props) {
 
           <Col>
             <FormGroup>
-              <Label>Cidade</Label>
               <Input
                 name="cidade"
-                value={cidade}
-                onChange={e => setCidade(e.target.value)}
+                label="Cidade"
                 required
               />
             </FormGroup>
@@ -300,11 +297,9 @@ function AbrigoForm(props) {
 
           <Col>
             <FormGroup>
-              <Label>UF</Label>
               <Input
                 name="uf"
-                value={uf}
-                onChange={e => setUf(e.target.value)}
+                label="UF"
                 required
               />
             </FormGroup>

@@ -24,11 +24,11 @@ function Input({ name, label, ...rest }) {
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}
-        className="input-unform"
+        className={error ? "input-unform with-error" : "input-unform"}
         {...rest}
       />
 
-      {error && <span className="error">{error}</span>}
+      { error && <span className="error">{error}</span> }
     </>
   );
 }

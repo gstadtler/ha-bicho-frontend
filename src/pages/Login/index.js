@@ -1,50 +1,64 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { login } from "../../services/auth";
 import { FaFacebookF } from 'react-icons/fa';
-
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  CardText,
-  Form,
-  FormGroup,
-  Input,
-  Button,
-} from 'reactstrap';
+import { Form } from '@unform/web';
+import Input from '../../components/Input';
+import * as Yup from 'yup';
+import { Container, Row, Col, Card,
+  CardHeader, CardBody, CardText,
+  FormGroup, Button } from 'reactstrap';
 
 import logotipoVerde from '../../imagens/logotipo-verde.svg';
 import './styles.css';
-
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
 
-function Login(props) {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Login(props) {
+  const formRef = useRef(null);
 
   //Sign In with social media
   const [userData, setUserData] = useState('');
   const [fbError, setFbError] = useState('');
   const [googleError, setGoogleError] = useState('');
 
-  async function handleSignIn(e) {
-    e.preventDefault();
-    const userSession = { email, password };
+  async function handleSignIn(data) {
     try {
-      const response = await api.post("/login", userSession);
-      login(response.data.token);
-      props.history.push("/");
+      // Remove all previous errors
+      formRef.current.setErrors({});
+
+      const schema =  Yup.object().shape({
+        email: Yup.string().email('Insira um e-mail válido!'),
+        password: Yup.string().min(6, 'Sua senha deve ter no mínimo 6 caracteres.').max(30)
+      })
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      // Validation passed
+      const response = await api.post("/login", data);
+      if (response.data.token) {
+        login(response.data.token);
+        props.history.push("/");
+      } else {
+        alert(response.data.notRegistered);
+      }
+      
     } catch (err) {
-      console.log(err);
-    }
+      const validationErrors = {};
+
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+
+        formRef.current.setErrors(validationErrors);
+      }
+    };
   }
 
   function responseFacebook(response) {
@@ -91,7 +105,7 @@ function Login(props) {
               </CardHeader>
 
               <CardBody>
-                <Form onSubmit={handleSignIn}>
+                <Form ref={formRef} onSubmit={handleSignIn}>
                   <FormGroup className="social-login">
                     <div>
                       <FacebookLogin
@@ -118,10 +132,8 @@ function Login(props) {
                   <FormGroup>
                     <Input
                       name="email"
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
                       type="email"
-                      placeholder="Email"
+                      placeholder="E-mail"
                       required
                     />
                   </FormGroup>
@@ -129,8 +141,6 @@ function Login(props) {
                   <FormGroup>
                     <Input
                       name="password"
-                      value={password}
-                      onChange={e => setPassword(e.target.value)}
                       type="password"
                       placeholder="Senha"
                       required
@@ -147,8 +157,6 @@ function Login(props) {
                   </FormGroup>
                 </Form>
               </CardBody>
-
-
             </Card>
           </Col>
         </Row>

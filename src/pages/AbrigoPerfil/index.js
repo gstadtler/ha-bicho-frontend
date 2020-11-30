@@ -9,7 +9,7 @@ import {
 	Card, Button, CardImg, CardTitle, CardText, CardColumns,
 	CardSubtitle, CardBody
 } from 'reactstrap';
-
+import NumberFormat from 'react-number-format';
 import './styles.css';
 import pets3 from '../../imagens/pets3.svg';
 
@@ -44,6 +44,15 @@ function AbrigoPerfil(props) {
 		loadAbrigo();
 	}, []);
 
+	function sumDonations() {
+		if(abrigo.donations){
+			return abrigo.donations.map(donate => donate.quantia).reduce(
+				(a, b) => (parseFloat(a) + parseFloat(b)).toFixed(2), 0);
+		} else {
+			return 0;
+		}
+	}
+	
 	async function applyInfoEdition(editedAbrigo) {
 		console.log('aplicando edição');
 		try {
@@ -107,7 +116,15 @@ function AbrigoPerfil(props) {
 
 				<Card body inverse color="info" className="d-flex">
 					<CardTitle tag="h3">Doações</CardTitle>
-					<CardText>Doações recebidas até agora: R$ 0,00</CardText>
+					<CardText>Doações recebidas até agora: 
+						<NumberFormat
+							value={sumDonations()}
+							displayType={'text'}
+							thousandSeparator={true}
+							prefix={'R$'}
+							className="donations"
+						/>
+					</CardText>
 					<CardText>Nos ajude a manter nossos amiguinhos felizes e saudáveis!</CardText>
 					<Button color="success">
 						<Link

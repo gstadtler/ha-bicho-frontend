@@ -12,3 +12,12 @@
 	font-size: 18px;
 }
 
+.abrigo-perfil .donations {
+	background: #fff;
+	color: #333366;
+	border-radius: 4px;
+	padding: 2px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+

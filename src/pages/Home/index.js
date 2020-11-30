@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
+import NumberFormat from 'react-number-format';
 import {
   Container, Row, Col, Button,
   Card, CardBody
@@ -16,7 +18,24 @@ import pets from '../../imagens/pets2.svg';
 
 function Home(props) {
 
-  const [donations, setDonations] = useState([2,5,0,0,0]);
+  const [donations, setDonations] = useState([]);
+
+  useEffect(() => {
+    async function loadDonations() {
+      try {
+        const { data } = await api.get('/donations');
+        setDonations(data);
+      } catch (err) {
+        console.log(err);
+      };
+    };
+    loadDonations();
+  },[])
+
+  function sumDonations() {
+    return donations.map(donate => donate.quantia).reduce(
+      (a, b) => (parseFloat(a) + parseFloat(b)).toFixed(2), 0);
+  }
 
   return (
     <div className="home-page">
@@ -101,6 +120,7 @@ function Home(props) {
           </Col>
         </Row>
       </Container>
+      
       <Container className="third-container" fluid={true}>
         <Container className="d-flex flex-column p-5" fluid={true}>
           <Row lg="12" md="12" sm="12">
@@ -108,15 +128,20 @@ function Home(props) {
               <h2 style={{color: "#fff", marginBottom: "20px"}}>Total de doações até agora:</h2>
               <Card className="content-wrapper">
                 <CardBody className="d-flex justify-content-center m-1">
-                  {donations.map(donate =>
-                    <h1 key={donate.index} className="each-number">{donate}</h1>
-                  )}
+                  <NumberFormat 
+                    value={sumDonations()}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    prefix={'R$'}
+                    className="each-number"
+                  />
                 </CardBody>
               </Card>
             </Col>
           </Row>
         </Container>
       </Container>
+
       <Container className="fourth-container" fluid={true}>
         <Row className="rodape-habicho">
           <Col className="d-flex justify-content-end content">

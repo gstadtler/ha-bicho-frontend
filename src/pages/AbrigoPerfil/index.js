@@ -12,7 +12,7 @@ import {
 import NumberFormat from 'react-number-format';
 import './styles.css';
 import pets3 from '../../imagens/pets3.svg';
-
+import sadPug from '../../imagens/sad_pug.svg';
 
 
 function AbrigoPerfil(props) {
@@ -44,15 +44,27 @@ function AbrigoPerfil(props) {
 		loadAbrigo();
 	}, []);
 
+	function theresImages() {
+		if (abrigo.images) {
+			if (abrigo.images.length === 0) {
+				return false;
+			} else {
+				return true
+			}
+		} else {
+			return false;
+		}
+	}
+
 	function sumDonations() {
-		if(abrigo.donations){
+		if (abrigo.donations) {
 			return abrigo.donations.map(donate => donate.quantia).reduce(
 				(a, b) => (parseFloat(a) + parseFloat(b)).toFixed(2), 0);
 		} else {
 			return 0;
 		}
 	}
-	
+
 	async function applyInfoEdition(editedAbrigo) {
 		console.log('aplicando edição');
 		try {
@@ -105,7 +117,14 @@ function AbrigoPerfil(props) {
 				</Card>
 				<Card>
 					<CardBody>
-						<SlideShow />
+						{theresImages() ? (
+							<SlideShow pictures={abrigo.images} />
+						) : (
+							<div>
+								<img src={sadPug} alt="Ha-bichinho triste" width="100%" height="350px" />
+								<CardText>{abrigo.nome} ainda não inseriu nenhuma imagem</CardText>
+							</div>
+						)}
 					</CardBody>
 					<CardBody>
 						<CardTitle tag="h4" style={{ color: "#333366" }}>Ha-bichinhos do abrigo</CardTitle>
@@ -116,7 +135,7 @@ function AbrigoPerfil(props) {
 
 				<Card body inverse color="info" className="d-flex">
 					<CardTitle tag="h3">Doações</CardTitle>
-					<CardText>Doações recebidas até agora: 
+					<CardText>Doações recebidas até agora:
 						<NumberFormat
 							value={sumDonations()}
 							displayType={'text'}

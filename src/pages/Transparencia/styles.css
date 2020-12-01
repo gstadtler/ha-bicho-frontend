@@ -2,3 +2,29 @@
   color: #669999;
   margin: 20px 20px;
 }
+
+.gastos {
+  gap: 5px;
+  margin-top: 40px;
+}
+
+.gastos .card-despesa {
+  background: #f7f7f7;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
+
+.gastos .card-mes {
+  text-align: center;
+}
+
+.gastos .card-mes .valor {
+  background: #669999;
+	color: #fff;
+	border-radius: 4px;
+	padding: 2px;
+	font-weight: bold;
+}

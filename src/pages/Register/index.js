@@ -23,7 +23,6 @@ function Register(props) {
 
 	const role = 'doador';
 	//Sign Up with social media
-	const [userData, setUserData] = useState('');
 	const [fbError, setFbError] = useState('');
 	const [googleError, setGoogleError] = useState('');
 
@@ -62,7 +61,7 @@ function Register(props) {
 				login(response.data.token);
 				props.history.push("/");
 			} else {
-				alert("Houve algum erro durante o cadastro :(");
+				alert("Houve algum erro durante o cadastro, tente novamente!");
 			}
 
 		} catch (err) {
@@ -78,13 +77,31 @@ function Register(props) {
     };
 	}
 
+	async function handleSocialSignUp(user) {
+		try {
+			const response = await api.post("/register", user);
+			if (response.data.token) {
+				login(response.data.token);
+				props.history.push("/");
+			} else {
+				alert('Houve algum erro ao se cadastrar, tente novamente!');
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	function responseFacebook(response) {
 		if (response) {
 			if (!response.status) {
-				setUserData(response);
-				console.log(userData);
-				login(response.accessToken);
-				props.history.push("/");
+				const { name, email, id } = response;
+				const user = { 
+					username: name, 
+					email: email, 
+					password: id, 
+					role: role
+				}
+				handleSocialSignUp(user);
 			} else {
 				setFbError(response);
 				console.log(fbError);
@@ -97,10 +114,14 @@ function Register(props) {
 	function responseGoogle(response) {
 		if (response) {
 			if (!response.error) {
-				setUserData(response.profileObj);
-				console.log(userData);
-				login(response.accessToken);
-				props.history.push("/");
+				const { name, email, googleId } = response.profileObj;
+				const user = { 
+					username: name, 
+					email: email, 
+					password: googleId, 
+					role: role
+				}
+				handleSocialSignUp(user);
 			} else {
 				setGoogleError(response);
 				console.log(googleError);
@@ -128,7 +149,7 @@ function Register(props) {
 											<FacebookLogin
 												appId="398864984824000"
 												fields="name,email"
-												scope="public_profile,user_friends"
+												scope="public_profile,user_friends,email"
 												callback={responseFacebook}
 												icon={<FaFacebookF />}
 												textButton="Cadastrar-se com Facebook"

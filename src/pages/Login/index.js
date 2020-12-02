@@ -21,7 +21,6 @@ function Login(props) {
   const formRef = useRef(null);
 
   //Sign In with social media
-  const [userData, setUserData] = useState('');
   const [fbError, setFbError] = useState('');
   const [googleError, setGoogleError] = useState('');
 
@@ -61,13 +60,29 @@ function Login(props) {
     };
   }
 
+  async function handleSocialSignIn(user) {
+    try {
+      const response = await api.post("/login", user);
+      if (response.data.token) {
+        login(response.data.token);
+        props.history.push("/");
+      } else {
+        alert(response.data.notRegistered);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   function responseFacebook(response) {
     if (response) {
       if (!response.status) {
-        setUserData(response);
-        console.log(userData);
-        login(response.accessToken);
-        props.history.push("/");
+        const { email, id } = response;
+        const user = {
+          email: email, 
+          password: id
+        };
+        handleSocialSignIn(user);
       } else {
         setFbError(response);
         console.log(fbError);
@@ -80,10 +95,12 @@ function Login(props) {
   function responseGoogle(response) {
     if (response) {
       if (!response.error) {
-        setUserData(response.profileObj);
-        console.log(userData);
-        login(response.accessToken);
-        props.history.push("/");
+        const { email, googleId } = response.profileObj;
+        const user = {
+          email: email, 
+          password: googleId
+        };
+        handleSocialSignIn(user);
       } else {
         setGoogleError(response);
         console.log(googleError);

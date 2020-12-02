@@ -42,7 +42,7 @@ function AbrigoPerfil(props) {
 			}
 		}
 		loadAbrigo();
-	}, []);
+	}, [abrigoUpdated]);
 
 	function theresImages() {
 		if (abrigo.images) {
@@ -65,16 +65,20 @@ function AbrigoPerfil(props) {
 		}
 	}
 
-	async function applyInfoEdition(editedAbrigo) {
+	function handleUpdatedAbrigo() {
+		setAbrigoUpdated(!abrigoUpdated);
+	}
+
+	async function applyInfoEdition(editedAbrigo, setModal) {
 		console.log('aplicando edição');
 		try {
 			const response = await api.put(`/abrigos/${abrigo.id}`, editedAbrigo);
 			console.log(response);
-			setAbrigoUpdated(!abrigoUpdated);
+			handleUpdatedAbrigo();
 		} catch (error) {
 			console.log(error);
 		}
-		props.setModal();
+		setModal();
 	};
 
 	function isMeuPerfil() {
@@ -129,7 +133,7 @@ function AbrigoPerfil(props) {
 					<CardBody>
 						<CardTitle tag="h4" style={{ color: "#333366" }}>Ha-bichinhos do abrigo</CardTitle>
 						<CardText>Acompanhe a situação dos nossos hóspedes animais</CardText>
-						{isMeuPerfil() && <ModalEditAbrigoImages abrigo={abrigo} />}
+						{isMeuPerfil() && <ModalEditAbrigoImages abrigo={abrigo} apply={handleUpdatedAbrigo} />}
 					</CardBody>
 				</Card>
 

@@ -28,7 +28,7 @@ function Doacoes(props) {
               <CardImg top className="doacoes-img" src={moneyDonate} alt="Doação financeira" />
               <CardBody className="card-content">
                 <CardTitle tag="h2">Doação Financeira</CardTitle>
-                <CardText className="content-text"><li>Preço mínimo de R$ 5,00</li></CardText>
+                <CardText className="content-text"><li>Valor mínimo de R$ 5,00</li></CardText>
                 <Button className="doacao-btn-active">
                   <Link 
 								    to={`/payments/${id}/${nome}`}

@@ -1,0 +1,43 @@
+.edit-images img {
+	width: 100%;
+	margin: auto;
+	margin-bottom: 25px;
+}
+
+.edit-images .drop-files {
+  border: 2px dashed #333366;
+  width: 100%;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  color: #111;
+}
+
+.edit-abrigo-images .bt-open-modal {
+  background: #333366;
+  padding: 0 5px;
+	color: #fff;
+  border: none;
+	font-weight: 600;
+	font-size: 16px;
+	border-radius: 4px;
+	transition: background 0.5s;
+}
+
+.edit-abrigo-images .bt-open-modal:hover {
+	background-color: #5d5d99;
+}
+
+.modal-edit-images .bt-close-modal {
+  background: #333366;
+	display: flex;
+	align-self: flex-end;
+	margin: 10px 10px;
+	padding: 10px;
+}
+
+.modal-edit-images .bt-close-modal:hover {
+	background-color: #5d5d99;
+}
+

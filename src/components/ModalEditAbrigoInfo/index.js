@@ -1,20 +1,24 @@
-import React from 'react';
-import ModalComponent from '../ModalComponent';
+import React, { useState } from 'react';
 import { Form } from '@unform/web';
 import Input from '../Input';
+import { FiX } from "react-icons/fi";
 
-import { Row, Col, FormGroup, Label, Button } from 'reactstrap';
+import { Modal, Container, Row, Col, FormGroup, Label, Button } from 'reactstrap';
 import './styles.css';
 import logotipoAzul from '../../imagens/logotipo-azul.svg';
 
-function ModalEditAbrigoInfo({abrigo, apply}) {
+function ModalEditAbrigoInfo({ abrigo, apply }) {
+  const [showModal, setShowModal] = useState(false);
 
+  function toggleModal() {
+    setShowModal(!showModal);
+  }
 
   function handleEditInfo(data) {
     console.log('abrigo editado', data);
-    apply(data);
+    apply(data, toggleModal);
   }
-
+  
   function editingAbrigoInfo() {
     return (
       <>
@@ -28,7 +32,7 @@ function ModalEditAbrigoInfo({abrigo, apply}) {
           <Row className="justify-content-center mb-3">
             <h1>Editando Informações</h1>
             <p>
-              <span style={{fontWeight: "700", color: "#333366"}}>
+              <span style={{ fontWeight: "700", color: "#333366" }}>
                 *Para editar basta sobrescrever as informações desejadas
               </span>
             </p>
@@ -90,8 +94,7 @@ function ModalEditAbrigoInfo({abrigo, apply}) {
                   name="historia"
                   label="História"
                   type="text"
-                  placeholder="Por enquanto seu abrigo só tem uma breve descrição,
-                  que tal contar sua história?"
+                  placeholder="Conte-nos sua história"
                 />
               </FormGroup>
             </Col>
@@ -157,8 +160,8 @@ function ModalEditAbrigoInfo({abrigo, apply}) {
               </Col>
             </Row>
           </FormGroup>
-          <Button 
-            className="submit-button" 
+          <Button
+            className="submit-button"
             type="submit"
           >
             Salvar Alterações
@@ -169,9 +172,27 @@ function ModalEditAbrigoInfo({abrigo, apply}) {
   }
 
   return (
-    <ModalComponent btnOpenModalName="Editar Informações" btnColor="#333366">
-      {editingAbrigoInfo()}
-    </ModalComponent>
+    <Container className="edit-abrigo-info p-0" fluid={true}>
+      <Button
+        className="bt-open-modal"
+        onClick={toggleModal}
+      >
+        Editar Informações
+      </Button>
+      <Modal
+        isOpen={showModal}
+        backdrop={true}
+        keyboard={true}
+        className="modal-lg modal-edit-info"
+      >
+        <Button className="bt-close-modal" onClick={toggleModal}>
+          <FiX />
+        </Button>
+        <div>
+          {editingAbrigoInfo()}
+        </div>
+      </Modal>
+    </Container>
   )
 }
 

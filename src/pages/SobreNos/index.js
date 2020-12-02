@@ -16,21 +16,24 @@ function SobreNos(props) {
 									<Card style={{border: "none"}}>
 										<CardBody style={{background: "#bdd3d3"}}>
 											<CardText className="sb-nos-text">
-												Somos uma plataforma existente com o intuito de dar visibilidade
-												para abrigos de animais e trazer para eles mais doações.
+												Somos uma plataforma existente com o objetivo de ajudar abrigos de animais
+												abandonados, promovendo a visibilidade deles e aumentando o número
+												de doações financeiras. Fazendo assim com que os mesmos possam lidar melhor
+												com suas despesas.
 												Pretendemos também promover a interação entre doadores e abrigos de animais,
-												além de contribuir para a praticidade e a transparência de informações e trocas financeiras.
-												Logo, buscamos com essa plataforma a maior comodidade para você, doador, e para a causa social.
+												além de contribuir com a praticidade e a transparência de informações, 
+												e trocas financeiras. Logo, buscamos com essa plataforma a maior comodidade para você, 
+												doador, e para a causa social.
 										</CardText>
 											<CardText className="sb-nos-text">
 												Contamos com uma lista de perfis cadastrados onde você pode encontrar as necessidades emergenciais
-												dos locais de acolhimento e quais estão mais próximos de você.
+												dos abrigos e quais estão mais próximos de você.
 												Também oferecemos benefícios para os cadastrados em nosso site,
 												desde de descontos com as empresas parceiras até o monitoramento de como o seu dinheiro vem sendo usado.
 										</CardText>
 											<CardText className="sb-nos-text">
-												Fazemos parte de um projeto criado por estudantes que visam ajudar a causa animal
-												e trazer uma recompensa social. Para mais informações, entre em Contato.
+												Esta plataforma é parte de um projeto criado por estudantes que visam ajudar a causa animal
+												e trazer uma recompensa social. Para mais informações, entre em contato conosco.
 										</CardText>
 										</CardBody>
 									</Card>

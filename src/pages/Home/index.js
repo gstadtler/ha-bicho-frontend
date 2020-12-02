@@ -51,7 +51,7 @@ function Home(props) {
 
         <Row>
           <Col className="d-flex justify-content-center mt-3 slogan" md="12">
-            <h1>Mediamos doações com empatia, transparência e praticidade.</h1>
+            <h1>Aumentar doações com empatia, transparência e praticidade.</h1>
           </Col>
         </Row>
         <Row>
@@ -78,7 +78,7 @@ function Home(props) {
                 para a manutenção destes lugares.
               </p>
               <Button className="home-btns">
-                <Link to="/abrigos" className="btn-links">Faça sua contribuição</Link>
+                <Link to="/abrigos" className="btn-links">Faça sua doação</Link>
               </Button>
             </main>
           </Col>
@@ -144,15 +144,17 @@ function Home(props) {
 
       <Container className="fourth-container" fluid={true}>
         <Row className="rodape-habicho">
-          <Col className="d-flex justify-content-end content">
+          <Col className="d-flex content">
             <div className="d-flex">
-              <h6 style={{marginRight: "10px", padding: "3px"}}>Encontre-nos em:</h6>
+              <h6 style={{marginRight: "5px", padding: "3px"}}>Encontre-nos em:</h6>
               <a href="https://www.instagram.com/ha.bicho/">
-                <FaInstagram size="30" style={{fontWeight: "bold", color: "#333366"}} />
+                <FaInstagram size="31" style={{fontWeight: "bold", color: "#333366"}} />
+                <p>@ha.bicho</p>
               </a>
             </div>
-
-            <p style={{color: "#669999", padding: "2px"}}>
+          </Col>
+          <Col className="d-flex justify-content-end">
+            <p style={{color: "#669999", padding: "2px", textAlign: "center"}}>
               Feito com <FaHeart style={{color: "#333366"}} /> pela Ha-bicho
             </p>
           </Col>

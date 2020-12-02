@@ -13,6 +13,7 @@
 .home-page .btn-links {
   text-decoration: none;
   color: #fff;
+  padding: 0 10px;
 }
 
 .home-page .first-container .home-logo {
@@ -24,7 +25,7 @@
 @media (max-width:600px) 
 {
   .home-page .first-container .home-logo {
-    width: 400px;
+    width: 350px;
     height: 100%;
   }
 }
@@ -64,8 +65,8 @@
 
 .find-abrigos main p {
   margin: 25px 0;
-  color: #fff;
-  font-weight: 600;
+  color: #333366;
+  font-weight: 630;
   font-size: 18px;
 }
 
@@ -130,9 +131,12 @@
 .home-page .fourth-container .rodape-habicho {
   font-weight: 600;
   font-size: 16px;
-  margin: 10px 0 0;
+  margin-top: 10px;
 }
 
-.home-page .fourth-container .rodape-habicho .content {
-  gap: 30px;
+.home-page .fourth-container .rodape-habicho .content a {
+  text-decoration: none;
+  display: flex;
+  gap: 1px;
+  color: #333366;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
-import { Container, Row, Col, Card, CardHeader, CardBody, CardText, CardFooter, CardDeck, CardGroup } from 'reactstrap';
+import { Container, Card, CardHeader, CardBody,
+  CardText, CardFooter, CardDeck } from 'reactstrap';
 import { MdPets } from 'react-icons/md';
 import './styles.css';
 

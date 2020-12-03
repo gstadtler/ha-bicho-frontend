@@ -24,7 +24,12 @@
   margin: auto;
 }
 
-.payments-page .content li{
+.payments-page .content .card-bd .pay-options{
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.payments-page .content {
   margin-bottom: 20px;
 }
 

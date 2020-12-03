@@ -122,8 +122,8 @@ function Home(props) {
       </Container>
       
       <Container className="third-container" fluid={true}>
-        <Container className="d-flex flex-column p-5" fluid={true}>
-          <Row lg="12" md="12" sm="12">
+        <Container className="d-flex flex-column p-3" fluid={true}>
+          <Row lg="12" md="12" sm="12" className="mb-3">
             <Col>
               <h2 style={{color: "#fff", marginBottom: "20px"}}>Total de doações até agora:</h2>
               <Card className="content-wrapper">

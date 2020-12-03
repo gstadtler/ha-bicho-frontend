@@ -16,9 +16,6 @@ import UserPerfil from './pages/UserPerfil';
 import Doacoes from './pages/Doacoes';
 import Payments from './pages/Payments';
 import Transparencia from './pages/Transparencia';
-import PaymentSuccess from './pages/PaymentSuccess';
-import PaymentPending from './pages/PaymentPending';
-import PaymentFailure from './pages/PaymentFailure';
 import Teste from './components/FormTest';
 
 
@@ -95,12 +92,12 @@ function Routes() {
 				}/>
 
 				
+				<PrivateRoute path="/meu-perfil/:email" exact component={UserPerfil} />
 				<PrivateRoute path="/doacoes/:abrigoId/:abrigoNome" exact component={Doacoes} />
 				<PrivateRoute path="/payments/:abrigoId/:abrigoNome" exact component={Payments} />
-				<PrivateRoute path="/meu-perfil/:email" exact component={UserPerfil} />
-				<PrivateRoute path="/payments/success" component={PaymentSuccess}/>
-				<PrivateRoute path="/payments/pending" component={PaymentPending}/>
-				<PrivateRoute path="/payments/failure" component={PaymentFailure}/>
+				<PrivateRoute path="/payments/success" component={Payments}/>
+				<PrivateRoute path="/payments/pending" component={Payments}/>
+				<PrivateRoute path="/payments/failure" component={Payments}/>
 				<Route path="*" component={() => <h1>Page not found</h1>} />
 			</Switch>
 		</BrowserRouter>

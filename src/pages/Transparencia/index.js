@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NumberFormat from 'react-number-format';
-import { Container, Card, CardHeader, CardBody,
-  CardText, CardFooter, CardDeck } from 'reactstrap';
+import api from '../../services/api';
+import { isAuthenticated } from '../../services/auth';
+import ModalEditGastos from '../../components/ModalEditGastos';
+import {
+  Container, Card, CardHeader, CardBody,
+  CardText, CardFooter, CardDeck
+} from 'reactstrap';
 import { MdPets } from 'react-icons/md';
 import './styles.css';
 
 function Transparencia(props) {
+  const [role, setRole] = useState('');
+  const [despesas, setDespesas] = useState(['Ração', 'Vacinas', 'Medicamentos', 'Exames',
+    'Cirurgias', 'Infraestrutura', 'Detetização', 'Água', 'Energia']);
+  const [gastosMensais, setGastosMensais] = useState([
+    { mes: 'Janeiro', gasto: '' },
+  ]);
 
-  const despesas = ['Ração', 'Vacinas', 'Medicamentos', 'Exames',
-    'Cirurgias', 'Infraestrutura', 'Detetização',
-    'Água', 'Energia'];
+  useEffect(() => {
+    async function getUser() {
+      try {
+        if (isAuthenticated()) {
+          const response = await api.get("/show");
+          if (response.data) {
+            const { role } = response.data;
+            setRole(role);
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getUser();
+  }, [])
 
-  //const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril',
-  //  'Maio', 'Junho', 'Julho', 'Agosto',
-  //  'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  function setEditView() {
+    if (role === "abrigo") {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return (
     <>
@@ -26,10 +54,11 @@ function Transparencia(props) {
       }}>
         *As tabelas são atualizadas mensalmente pelos abrigos
       </span>
+      {setEditView() && <ModalEditGastos despesas={despesas} gastosMensais={gastosMensais} />}
       <Container className="d-flex justify-content-center gastos" fluid={true}>
         <CardDeck>
-          {despesas.map(despesa => (
-            <Card className="">
+          {despesas.map((despesa, i) => (
+            <Card className="" key={i}>
               <CardHeader className="d-flex justify-content-center">
                 <MdPets size={20} style={{ color: "#669999" }} />
               </CardHeader>

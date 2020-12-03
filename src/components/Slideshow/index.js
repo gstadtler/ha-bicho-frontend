@@ -6,7 +6,6 @@ import {
   CarouselIndicators,
   CarouselCaption
 } from 'reactstrap';
-import './styles.css';
 
 const SlideShow = ({ pictures }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -36,7 +35,7 @@ const SlideShow = ({ pictures }) => {
         onExited={() => setAnimating(false)}
         key={pic.id}
       >
-        <img src={pic.url} alt={pic.path} />
+        <img src={pic.url} alt={pic.path} width="100%" height="400px" />
         <CarouselCaption captionText={''} />
       </CarouselItem>
     );

@@ -125,7 +125,7 @@ function AbrigoPerfil(props) {
 							<SlideShow pictures={abrigo.images} />
 						) : (
 							<div>
-								<img src={sadPug} alt="Ha-bichinho triste" width="100%" height="350px" />
+								<img src={sadPug} alt="Ha-bichinho triste" width="100%" height="400px" />
 								<CardText>{abrigo.nome} ainda não inseriu nenhuma imagem</CardText>
 							</div>
 						)}

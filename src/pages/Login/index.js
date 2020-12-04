@@ -128,7 +128,7 @@ function Login(props) {
                       <FacebookLogin
                         appId="398864984824000"
                         fields="name,email"
-                        scope="public_profile,user_friends"
+                        scope="public_profile,email"
                         callback={responseFacebook}
                         icon={<FaFacebookF />}
                         textButton="Entrar com Facebook"

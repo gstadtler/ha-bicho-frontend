@@ -1,0 +1,9 @@
+.termos-uso {
+  font-weight: 600;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.termos-uso .content {
+  margin: 10px 0  15px 25px;
+}

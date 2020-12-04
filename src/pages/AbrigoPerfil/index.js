@@ -96,7 +96,12 @@ function AbrigoPerfil(props) {
 					<CardImg top width="100%" src={pets3} alt="Card image cap" />
 					<CardBody>
 						<CardTitle tag="h3" style={{ color: "#333366" }}>{abrigo.nome}</CardTitle>
-						<CardSubtitle tag="h6" className="mb-2 text-muted">Abrigo</CardSubtitle>
+						<CardSubtitle 
+							tag="h6" 
+							className="mb-2 text-muted"
+						>
+							Abrigamos: {abrigo.qtd_animais} animais
+						</CardSubtitle>
 						<CardText>{abrigo.descricao}</CardText>
 						{isMeuPerfil() && <ModalEditAbrigoInfo abrigo={abrigo} apply={applyInfoEdition} />}
 					</CardBody>

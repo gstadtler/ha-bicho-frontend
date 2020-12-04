@@ -63,10 +63,6 @@ function Home(props) {
 
       <Container className="second-container" fluid={true}>
         <Row>
-          <Col lg="6" md="6" sm="12" className="p-4 abrigos-map">
-            <img src={mapboxSt} alt="Mapa de Abrigos" width="100%" height="100%" />
-            {/*<AbrigosMap />*/}
-          </Col>
           <Col className="find-abrigos">
             <main>
               <h2>

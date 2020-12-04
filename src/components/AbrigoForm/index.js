@@ -134,6 +134,7 @@ function AbrigoForm(props) {
             <Input
               name="cnpj_cpf"
               label="CNPJ ou CPF do responsável"
+              placeholder="Ex: 76283300879 sem pontos ou hífen"
               required
             />
           </FormGroup>
@@ -143,6 +144,7 @@ function AbrigoForm(props) {
             <Input
               name="telefone"
               label="Telefone"
+              placeholder="Ex: 81 988239266"
               required
             />
           </FormGroup>
@@ -187,6 +189,7 @@ function AbrigoForm(props) {
             <Input
               name="qtd_animais"
               label="Número de animais"
+              placeholder="Quantos animais vocês abrigam?"
               required
             />
           </FormGroup>
@@ -196,14 +199,14 @@ function AbrigoForm(props) {
             <Input
               name="descricao"
               label="Descrição"
-              type="textarea"
+              placeholder="Breve descrição sobre o abrigo"
               required
             />
           </FormGroup>
         </Col>
       </Row>
 
-      <h4>Acesso à localização</h4>
+      {/*<h4>Acesso à localização</h4>
       <Row className="location-access">
         <Col>
           <p style={{ fontWeight: "600" }}>
@@ -234,11 +237,21 @@ function AbrigoForm(props) {
             <Button className="btn-permitir" onClick={handleLocationAccess}>Permitir</Button>
           </p>
         </Col>
-      </Row>
+          </Row>*/}
 
       <FormGroup className="endereco">
         <Label className="address-field">Endereço</Label>
-
+        <Label className="subtitle">
+          <span style={{
+                fontStyle: "italic",
+                fontWeight: "600",
+                color: "#333366"
+              }}
+              >
+                *Não se preocupe, seu endereço não será exibido em nenhum
+                local do site, ele serve apenas para o nosso controle.
+            </span>
+        </Label>
         <Row>
 
           <Col>
@@ -246,6 +259,7 @@ function AbrigoForm(props) {
               <Input
                 name="rua"
                 label="Rua"
+                placeholder="Ex: 17 de agosto"
                 required
               />
             </FormGroup>
@@ -256,6 +270,7 @@ function AbrigoForm(props) {
               <Input
                 name="numero"
                 label="Número"
+                placeholder="Ex: 117"
                 required
               />
             </FormGroup>
@@ -266,6 +281,7 @@ function AbrigoForm(props) {
               <Input
                 name="cep"
                 label="CEP"
+                placeholder="Ex: 54810275"
                 required
               />
             </FormGroup>
@@ -280,6 +296,7 @@ function AbrigoForm(props) {
               <Input
                 name="bairro"
                 label="Bairro"
+                placeholder="Ex: San Martin"
                 required
               />
             </FormGroup>
@@ -290,6 +307,7 @@ function AbrigoForm(props) {
               <Input
                 name="cidade"
                 label="Cidade"
+                placeholder="Ex: Recife"
                 required
               />
             </FormGroup>
@@ -300,6 +318,7 @@ function AbrigoForm(props) {
               <Input
                 name="uf"
                 label="UF"
+                placeholder="Ex: PE"
                 required
               />
             </FormGroup>

@@ -199,7 +199,7 @@ function Register(props) {
 									<FormGroup className="termos-group">
 										<CardText>
 											Ao cadastrar-se você concorda com os
-											nossos <Link to="#" className="link-termos">termos e condições.</Link>
+											nossos <Link to="/termos-de-uso" className="link-termos">termos e condições.</Link>
 										</CardText>
 									</FormGroup>
 

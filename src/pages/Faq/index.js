@@ -30,7 +30,7 @@ function Faq(props) {
 							<Link to="/abrigos"> Nesta página</Link> você encontra uma lista de abrigos. 
 							Clicando em "conhecer" algum deles, você é redirecionado para o perfil deste abrigo,
 							onde você pode econtrar mais informações sobre o mesmo. Após
-							escolher, basta seguir as etapas para concluir o pagamento.
+							escolher, basta seguir as etapas para concluir a doação.
 						</p>
 					</div>
 					<div>
@@ -44,10 +44,9 @@ function Faq(props) {
 						<h3>Onde vejo as informações dos abrigos disponíveis?</h3>
 						<p>
 							Você pode encontrá-las selecionando algum abrigo 
-							no mapa interativo em nossa <Link to="/">página inicial </Link> 
-							ou na <Link to="/abrigos">lista de abrigos</Link>. 
+							na nossa <Link to="/abrigos">lista de abrigos</Link>. 
 							Lá, estão disponíveis a história do local, 
-							dados para contato, planilhas de gastos (mostrando para onde vai sua doação), 
+							planilhas de gastos (mostrando para onde vai sua doação), 
 							as formas de contribuir e registros do cotidiano do abrigo. 
 						</p>
 					</div>

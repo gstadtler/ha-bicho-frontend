@@ -16,7 +16,8 @@ import UserPerfil from './pages/UserPerfil';
 import Doacoes from './pages/Doacoes';
 import Payments from './pages/Payments';
 import Transparencia from './pages/Transparencia';
-import Teste from './components/FormTest';
+//import Teste from './components/FormTest';
+import TermosCompromisso from './pages/TermosCompromisso';
 
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -85,9 +86,14 @@ function Routes() {
 						<Transparencia {...props} />
 					</WithNavigation>
 				}/>
-				<Route path="/teste" exact render={props => 
+				{/*<Route path="/teste" exact render={props => 
 					<WithNavigation {...props}>
 						<Teste {...props} />
+					</WithNavigation>
+				}/>*/}
+				<Route path="/termos-de-uso" exact render={props => 
+					<WithNavigation {...props}>
+						<TermosCompromisso {...props} />
 					</WithNavigation>
 				}/>
 

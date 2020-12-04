@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Form } from '@unform/web';
 import Input from '../Input';
 import {
@@ -15,11 +15,11 @@ import "./styles.css";
 function AbrigoForm(props) {
   const formRef = useRef(null);
 
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  //const [latitude, setLatitude] = useState('');
+  //const [longitude, setLongitude] = useState('');
   const role = 'abrigo';
 
-  function handleLocationAccess() {
+  /*function handleLocationAccess() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude, longitude } = position.coords;
@@ -29,7 +29,7 @@ function AbrigoForm(props) {
         console.log(error);
       })
     }
-  };
+  };*/
 
   async function handleAbrigoUser(user) {
     try {
@@ -98,7 +98,7 @@ function AbrigoForm(props) {
         descricao, qtd_animais,
         telefone, rua, numero,
         cep, bairro, cidade,
-        uf, latitude, longitude
+        uf
       }
       const response = await api.post("/abrigos", novoAbrigo);
       if (response.data) {

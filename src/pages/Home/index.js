@@ -8,9 +8,6 @@ import {
 } from 'reactstrap';
 import { FaHeart, FaInstagram } from 'react-icons/fa';
 
-//import AbrigosMap from '../../components/AbrigosMap';
-import mapboxSt from '../../imagens/mapbox-st.jpg';
-
 import './styles.css';
 import logo from '../../imagens/logo.svg';
 import pets from '../../imagens/pets2.svg';
